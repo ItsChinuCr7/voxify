@@ -1,0 +1,802 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VOXIFY | Settings</title>
+  <link rel="stylesheet" href="../../css/Admin Dashboard/settings.css"/>
+  <link rel="stylesheet" href="../../css/common.css">
+<link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/design-tokens.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <link rel="stylesheet" href="../../css/cards.css">
+    <link rel="stylesheet" href="../../css/buttons.css">
+    <link rel="stylesheet" href="../../css/typography.css">
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="voxify-navbar">
+    <div class="navbar-left">
+        <button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="navbar-logo">VOX<span>IFY</span></div>
+    </div>
+
+    <div class="navbar-search">
+        <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input type="text" id="searchSeverity" placeholder="Search by location, service...">
+    </div>
+
+    <div class="navbar-right">
+        <button class="nav-icon-btn" id="notifIconBtn" title="Notifications">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+            </svg>
+            <span class="nav-badge">6</span>
+        </button>
+
+        <div class="status-quick-view">
+            <button class="status-quick-btn" id="statusQuickBtn">
+                <span class="status-dot"></span>
+                <span>Status</span>
+                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="6 9 12 15 18 9"/>
+                </svg>
+            </button>
+            <div class="status-dropdown" id="statusDropdown">
+                <h4>Severity Status</h4>
+                <div class="status-row"><span>High Severity</span><span class="status active" id="highSeverityBadge">0</span></div>
+                <div class="status-row"><span>Medium Severity</span><span class="status pending" id="mediumSeverityBadge">0</span></div>
+                <div class="status-row"><span>Low Severity</span><span class="status resolved" id="lowSeverityBadge">0</span></div>
+            </div>
+        </div>
+
+        <div class="navbar-profile">
+            <button class="profile-btn" id="profileBtn">
+                <div class="profile-avatar">AD</div>
+                <span class="profile-name">Admin</span>
+                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="6 9 12 15 18 9"/>
+                </svg>
+            </button>
+            <div class="profile-dropdown" id="profileDropdown">
+                <a href="#"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>My Profile</a>
+                <a href="settings.html"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>Settings</a>
+                <hr>
+                <a href="#" class="logout"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>Logout</a>
+            </div>
+        </div>
+    </div>
+</nav>
+<!-- ================= SIDEBAR ================= -->
+    <aside class="voxify-sidebar" id="voxifySidebar">
+        <div class="sidebar-user-info">
+            <div class="sidebar-avatar">AD</div>
+            <div class="sidebar-user-details">
+                <p>Admin User</p>
+                <p>System Administrator</p>
+            </div>
+        </div>
+        <nav class="sidebar-nav">
+            <div class="sidebar-section-label">Main Menu</div>
+            <a href="admin-dashboard.html">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                Dashboard
+            </a>
+            <a href="user-management.html">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                User Management
+            </a>
+            <a href="sla-alerts.html">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                SLA Alerts
+            </a>
+            <a href="alert-delivery.html">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 12 19.79 19.79 0 0 1 1.95 3.4 2 2 0 0 1 3.91 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                Alert Delivery
+            </a>
+            <div class="sidebar-section-label">Monitoring</div>
+            <a href="live-monitoring.html">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Live Monitoring
+            </a>
+            <a href="outage-alerts.html">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                Outage Alerts
+            </a>
+            <div class="sidebar-section-label">Analytics</div>
+            <a href="analytics-dashboard.html">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M2 20L22 20"/><path d="M4 16L8 8L13 12L20 4"/></svg>
+                Complaint Analysis
+            </a>
+            <a href="severity-dashboard.html" >
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/></svg>
+                Severity Dashboard
+            </a>
+            <a href="clustered-complaints.html">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><line x1="9" y1="9" x2="15" y2="15"/><line x1="15" y1="9" x2="9" y2="15"/></svg>
+                Clustured Complaints
+            </a>
+            <div class="sidebar-section-label">Account</div>
+            <a href="settings.html" class="active">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                System Settings
+            </a>
+        </nav>
+    </aside>
+
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- ================= MAIN LAYOUT ================= -->
+<div class="voxify-layout" id="voxifyLayout">
+<div class="settings-page">
+
+  <!-- Page Header -->
+  <div class="settings-page-header">
+    <div class="header-accent"></div>
+    <h2>Settings</h2>
+    <p>Manage your profile, notifications, security, and preferences</p>
+  </div>
+
+  <!-- Settings Layout -->
+  <div class="settings-layout">
+
+    <!-- ===== TABS NAV ===== -->
+    <div class="settings-tabs-nav">
+      <button class="settings-tab-btn active" data-tab="profile">
+        <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+        Profile
+      </button>
+      <button class="settings-tab-btn" data-tab="notifications">
+        <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+        Notifications
+      </button>
+      <button class="settings-tab-btn" data-tab="appearance">
+        <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+        Appearance
+      </button>
+      <hr class="settings-tab-divider"/>
+      <button class="settings-tab-btn" data-tab="security">
+        <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Security
+      </button>
+      <button class="settings-tab-btn" data-tab="threshold">
+        <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+        Outage Threshold
+      </button>
+      <button class="settings-tab-btn" data-tab="privacy">
+        <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+        Privacy
+      </button>
+      <hr class="settings-tab-divider"/>
+      <button class="settings-tab-btn" data-tab="account">
+        <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+        Account
+      </button>
+    </div>
+
+    <!-- ===== PANELS ===== -->
+    <div class="settings-panels">
+
+      <!-- ========== PROFILE ========== -->
+      <div class="settings-panel active" id="panel-profile">
+
+        <div class="settings-card">
+          <div class="settings-card-header">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+            <div><h3>Personal Information</h3><p>Update your name, email, and contact details</p></div>
+          </div>
+          <div class="settings-card-body">
+            <div class="avatar-section">
+              <div class="avatar-large">
+                AD
+                <button class="avatar-edit-btn" title="Change photo">
+                  <svg width="11" height="11" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+                </button>
+              </div>
+              <div class="avatar-info">
+                <p>Admin User</p>
+                <p>admin.user@email.com · Admin User</p>
+              </div>
+            </div>
+
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label>First Name</label>
+                <input type="text" value="Admin" placeholder="First name"/>
+              </div>
+              <div class="form-group">
+                <label>Last Name</label>
+                <input type="text" value="User" placeholder="Last name"/>
+              </div>
+              <div class="form-group">
+                <label>Email Address</label>
+              </div>
+              <div class="form-group">
+                <label>Phone Number</label>
+                <input type="tel" value="+91 98765 43210" placeholder="Phone"/>
+              </div>
+              <div class="form-group">
+                <label>City / District</label>
+                <input type="text" value="Mumbai" placeholder="City"/>
+              </div>
+              <div class="form-group">
+                <label>State</label>
+                <select>
+                  <option>Maharashtra</option>
+                  <option>Delhi</option>
+                  <option>Karnataka</option>
+                  <option>Tamil Nadu</option>
+                  <option>Gujarat</option>
+                </select>
+              </div>
+              <div class="form-group" style="grid-column: 1/-1;">
+                <label>Address</label>
+                <textarea placeholder="Enter your address">123, Main Street, Andheri West, Mumbai - 400053</textarea>
+              </div>
+            </div>
+          </div>
+          <div class="settings-card-footer">
+            <button class="btn secondary-btn" onclick="showToast('Changes discarded', 'info')">Discard</button>
+            <button class="btn primary-btn" onclick="showToast('Profile saved successfully!', 'success')">Save Changes</button>
+          </div>
+        </div>
+
+        <!-- Bio -->
+        <div class="settings-card">
+          <div class="settings-card-header">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+            <div><h3>Additional Details</h3><p>Help us understand your service needs better</p></div>
+          </div>
+          <div class="settings-card-body form-grid-1">
+            <div class="form-group">
+              <label>Preferred Language</label>
+              <select>
+                <option>English</option>
+                <option>Hindi</option>
+                <option>Marathi</option>
+                <option>Tamil</option>
+                <option>Telugu</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label>Brief Bio / Note</label>
+              <textarea placeholder="Tell us anything helpful...">Regular citizen reporting infrastructure issues in the western suburbs.</textarea>
+            </div>
+          </div>
+          <div class="settings-card-footer">
+            <button class="btn primary-btn" onclick="showToast('Details updated!', 'success')">Update</button>
+          </div>
+        </div>
+
+      </div><!-- /panel-profile -->
+
+      <!-- ========== NOTIFICATIONS ========== -->
+      <div class="settings-panel" id="panel-notifications">
+
+        <div class="settings-card">
+          <div class="settings-card-header">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            <div><h3>Notification Preferences</h3><p>Choose what alerts you want to receive</p></div>
+          </div>
+          <div class="settings-card-body">
+            <div class="toggle-row">
+              <div class="toggle-info">
+                <p>Complaint Status Updates</p>
+                <p>Get notified when your complaint status changes</p>
+              </div>
+              <label class="toggle-switch"><input type="checkbox" checked/><span class="toggle-slider"></span></label>
+            </div>
+            <div class="toggle-row">
+              <div class="toggle-info">
+                <p>Outage Alerts</p>
+                <p>Immediate alerts for service disruptions in your area</p>
+              </div>
+              <label class="toggle-switch"><input type="checkbox" checked/><span class="toggle-slider"></span></label>
+            </div>
+            <div class="toggle-row">
+              <div class="toggle-info">
+                <p>Resolution Notifications</p>
+                <p>Notify when your complaints are resolved</p>
+              </div>
+              <label class="toggle-switch"><input type="checkbox" checked/><span class="toggle-slider"></span></label>
+            </div>
+            <div class="toggle-row">
+              <div class="toggle-info">
+                <p>Weekly Summary</p>
+                <p>Receive a weekly digest of your activity</p>
+              </div>
+              <label class="toggle-switch"><input type="checkbox"/><span class="toggle-slider"></span></label>
+            </div>
+            <div class="toggle-row">
+              <div class="toggle-info">
+                <p>Feedback Reminders</p>
+                <p>Reminders to rate resolved complaints</p>
+              </div>
+              <label class="toggle-switch"><input type="checkbox" checked/><span class="toggle-slider"></span></label>
+            </div>
+            <div class="toggle-row">
+              <div class="toggle-info">
+                <p>Promotional & News</p>
+                <p>Updates about new features and announcements</p>
+              </div>
+              <label class="toggle-switch"><input type="checkbox"/><span class="toggle-slider"></span></label>
+            </div>
+          </div>
+          <div class="settings-card-footer">
+            <button class="btn primary-btn" onclick="showToast('Notification preferences saved!', 'success')">Save Preferences</button>
+          </div>
+        </div>
+
+        <div class="settings-card">
+          <div class="settings-card-header">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 12 19.79 19.79 0 0 1 1.95 3.4 2 2 0 0 1 3.91 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <div><h3>Delivery Channels</h3><p>How you'd like to receive notifications</p></div>
+          </div>
+          <div class="settings-card-body">
+            <div class="toggle-row">
+              <div class="toggle-info"><p>Email Notifications</p><p>john.doe@email.com</p></div>
+              <label class="toggle-switch"><input type="checkbox" checked/><span class="toggle-slider"></span></label>
+            </div>
+            <div class="toggle-row">
+              <div class="toggle-info"><p>SMS Notifications</p><p>+91 98765 43210</p></div>
+              <label class="toggle-switch"><input type="checkbox" checked/><span class="toggle-slider"></span></label>
+            </div>
+            <div class="toggle-row">
+              <div class="toggle-info"><p>Push Notifications</p><p>Browser &amp; app push alerts</p></div>
+              <label class="toggle-switch"><input type="checkbox"/><span class="toggle-slider"></span></label>
+            </div>
+          </div>
+          <div class="settings-card-footer">
+            <button class="btn primary-btn" onclick="showToast('Channel settings saved!', 'success')">Save</button>
+          </div>
+        </div>
+
+      </div><!-- /panel-notifications -->
+
+      <!-- ========== APPEARANCE ========== -->
+      <div class="settings-panel" id="panel-appearance">
+
+        <div class="settings-card">
+          <div class="settings-card-header">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="4"/><path d="M12 2v2M12 20v2M4.93 4.93l1.41 1.41M17.66 17.66l1.41 1.41M2 12h2M20 12h2M4.93 19.07l1.41-1.41M17.66 6.34l1.41-1.41"/></svg>
+            <div><h3>Theme</h3><p>Choose your display theme</p></div>
+          </div>
+          <div class="settings-card-body">
+            <div class="radio-group">
+              <label class="radio-option selected">
+                <input type="radio" name="theme" value="light" checked/>
+                <div class="radio-option-text">
+                  <p>Light Mode</p><p>Clean white background, best for daytime use</p>
+                </div>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="theme" value="dark"/>
+                <div class="radio-option-text">
+                  <p>Dark Mode</p><p>Dark background, easier on eyes at night</p>
+                </div>
+              </label>
+              <label class="radio-option">
+                <input type="radio" name="theme" value="system"/>
+                <div class="radio-option-text">
+                  <p>System Default</p><p>Follows your device's theme preference</p>
+                </div>
+              </label>
+            </div>
+          </div>
+          <div class="settings-card-footer">
+            <button class="btn primary-btn" onclick="showToast('Theme preference saved!', 'success')">Apply Theme</button>
+          </div>
+        </div>
+
+        <div class="settings-card">
+          <div class="settings-card-header">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="13.5" cy="6.5" r="2.5"/><circle cx="17.5" cy="10.5" r="2.5"/><circle cx="8.5" cy="7.5" r="2.5"/><circle cx="6.5" cy="12.5" r="2.5"/><path d="M12 20a6 6 0 0 0 6-6c0-1.11-.3-2.15-.82-3.04"/></svg>
+            <div><h3>Accent Color</h3><p>Personalise the highlight color across the interface</p></div>
+          </div>
+          <div class="settings-card-body">
+            <div class="theme-picker">
+              <div class="theme-swatch selected" style="background:#1F4FD8" data-color="#1F4FD8" title="Voxify Blue"></div>
+              <div class="theme-swatch" style="background:#6C3FC5" data-color="#6C3FC5" title="Royal Purple"></div>
+              <div class="theme-swatch" style="background:#0A9163" data-color="#0A9163" title="Forest Green"></div>
+              <div class="theme-swatch" style="background:#D4521A" data-color="#D4521A" title="Burnt Orange"></div>
+              <div class="theme-swatch" style="background:#C2185B" data-color="#C2185B" title="Rose Red"></div>
+              <div class="theme-swatch" style="background:#00838F" data-color="#00838F" title="Teal"></div>
+            </div>
+          </div>
+          <div class="settings-card-footer">
+            <button class="btn primary-btn" onclick="showToast('Accent color applied!', 'success')">Apply Color</button>
+          </div>
+        </div>
+
+        <div class="settings-card">
+          <div class="settings-card-header">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
+            <div><h3>Display Preferences</h3><p>Adjust font size and layout density</p></div>
+          </div>
+          <div class="settings-card-body">
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label>Font Size</label>
+                <select>
+                  <option>Small (13px)</option>
+                  <option selected>Medium (14px)</option>
+                  <option>Large (16px)</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label>Layout Density</label>
+                <select>
+                  <option>Compact</option>
+                  <option selected>Comfortable</option>
+                  <option>Spacious</option>
+                </select>
+              </div>
+            </div>
+          </div>
+          <div class="settings-card-footer">
+            <button class="btn primary-btn" onclick="showToast('Display settings saved!', 'success')">Save</button>
+          </div>
+        </div>
+
+      </div><!-- /panel-appearance -->
+
+      <!-- ========== SECURITY ========== -->
+      <div class="settings-panel" id="panel-security">
+
+        <div class="settings-card">
+          <div class="settings-card-header">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="11" width="18" height="11" rx="2" ry="2"/><path d="M7 11V7a5 5 0 0 1 10 0v4"/></svg>
+            <div><h3>Change Password</h3><p>Keep your account secure with a strong password</p></div>
+          </div>
+          <div class="settings-card-body form-grid-1">
+            <div class="form-group">
+              <label>Current Password</label>
+              <input type="password" placeholder="Enter current password" id="currentPass"/>
+            </div>
+            <div class="form-group">
+              <label>New Password</label>
+              <input type="password" placeholder="Enter new password" id="newPass" oninput="checkPasswordStrength(this.value)"/>
+              <div class="password-strength">
+                <div class="strength-bar"><div class="strength-fill" id="strengthFill"></div></div>
+                <div class="strength-label" id="strengthLabel">Enter a password</div>
+              </div>
+            </div>
+            <div class="form-group">
+              <label>Confirm New Password</label>
+              <input type="password" placeholder="Confirm new password" id="confirmPass"/>
+            </div>
+          </div>
+          <div class="settings-card-footer">
+            <button class="btn primary-btn" onclick="handlePasswordChange()">Update Password</button>
+          </div>
+        </div>
+
+        <div class="settings-card">
+          <div class="settings-card-header">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <div><h3>Two-Factor Authentication</h3><p>Add an extra layer of security to your account</p></div>
+          </div>
+          <div class="settings-card-body">
+            <div class="toggle-row">
+              <div class="toggle-info"><p>Enable 2FA via SMS</p><p>Receive a code to +91 98765 43210</p></div>
+              <label class="toggle-switch"><input type="checkbox"/><span class="toggle-slider"></span></label>
+            </div>
+            <div class="toggle-row">
+              <div class="toggle-info"><p>Enable 2FA via Email</p><p>Receive a code to john.doe@email.com</p></div>
+              <label class="toggle-switch"><input type="checkbox" checked/><span class="toggle-slider"></span></label>
+            </div>
+          </div>
+          <div class="settings-card-footer">
+            <button class="btn primary-btn" onclick="showToast('2FA settings updated!', 'success')">Save</button>
+          </div>
+        </div>
+
+        <div class="settings-card">
+          <div class="settings-card-header">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+            <div><h3>Active Sessions</h3><p>Devices currently signed in to your account</p></div>
+          </div>
+          <div class="settings-card-body">
+            <div class="session-item">
+              <div class="session-device">
+                <div class="session-icon">
+                  <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                </div>
+                <div class="session-info">
+                  <p>Chrome on Windows</p><p>Mumbai, IN · Active now</p>
+                </div>
+              </div>
+              <span class="session-current">Current</span>
+            </div>
+            <div class="session-item">
+              <div class="session-device">
+                <div class="session-icon">
+                  <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="5" y="2" width="14" height="20" rx="2" ry="2"/><line x1="12" y1="18" x2="12.01" y2="18"/></svg>
+                </div>
+                <div class="session-info">
+                  <p>Safari on iPhone</p><p>Mumbai, IN · 2 hours ago</p>
+                </div>
+              </div>
+              <button class="btn outline-btn btn-sm" onclick="showToast('Session revoked', 'success')">Revoke</button>
+            </div>
+            <div class="session-item">
+              <div class="session-device">
+                <div class="session-icon">
+                  <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="2" y="3" width="20" height="14" rx="2" ry="2"/><line x1="8" y1="21" x2="16" y2="21"/><line x1="12" y1="17" x2="12" y2="21"/></svg>
+                </div>
+                <div class="session-info">
+                  <p>Firefox on MacBook</p><p>Pune, IN · Yesterday</p>
+                </div>
+              </div>
+              <button class="btn outline-btn btn-sm" onclick="showToast('Session revoked', 'success')">Revoke</button>
+            </div>
+          </div>
+          <div class="settings-card-footer">
+            <button class="btn danger-btn" onclick="showToast('All other sessions signed out', 'success')">Sign Out All Other Sessions</button>
+          </div>
+        </div>
+
+      </div><!-- /panel-security -->
+	
+	<!-- ========== OUTAGE THRESHOLD ========== -->
+<div class="settings-panel" id="panel-threshold">
+
+  <!-- Threshold Configuration -->
+  <div class="settings-card">
+    <div class="settings-card-header">
+      <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path d="M12 8v4l3 3M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+      </svg>
+      <div>
+        <h3>Outage Threshold Rules</h3>
+        <p>Automatically trigger outages when complaint volume exceeds limits</p>
+      </div>
+    </div>
+
+    <div class="settings-card-body">
+      <div class="form-grid-2">
+
+        <div class="form-group">
+          <label>Complaint Type</label>
+          <select id="thresholdComplaintType">
+            <option>Network Issue</option>
+            <option>Power Outage</option>
+            <option>Service Degradation</option>
+            <option>Billing Issue</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Region</label>
+          <select id="thresholdRegion">
+            <option>Mumbai</option>
+            <option>Delhi NCR</option>
+            <option>Bangalore</option>
+            <option>Chennai</option>
+            <option>Pan-India</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Priority</label>
+          <select id="thresholdPriority">
+            <option value="critical">Critical</option>
+            <option value="high">High</option>
+            <option value="medium">Medium</option>
+            <option value="low">Low</option>
+          </select>
+        </div>
+
+        <div class="form-group">
+          <label>Time Window (minutes)</label>
+          <input type="number" id="thresholdWindow" value="15">
+        </div>
+
+        <div class="form-group">
+          <label>Complaint Threshold</label>
+          <input type="number" id="thresholdValue" value="20">
+        </div>
+
+        <div class="form-group">
+          <label>Auto‑Trigger Outage</label>
+          <select id="thresholdAuto">
+            <option value="yes">Yes</option>
+            <option value="no">No</option>
+          </select>
+        </div>
+
+      </div>
+    </div>
+
+    <div class="settings-card-footer">
+      <button class="btn secondary-btn" onclick="showToast('Changes discarded','info')">Discard</button>
+      <button class="btn primary-btn" onclick="saveThresholdConfig()">Save Rule</button>
+    </div>
+  </div>
+
+  <!-- Priority Weight Section -->
+  <div class="settings-card">
+    <div class="settings-card-header">
+      <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <polyline points="3 6 5 6 21 6"/>
+        <path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/>
+      </svg>
+      <div>
+        <h3>Priority Weighting</h3>
+        <p>Higher priority complaints count more heavily in outage detection</p>
+      </div>
+    </div>
+
+    <div class="settings-card-body form-grid-2">
+      <div class="form-group">
+        <label>Critical Weight</label>
+        <input type="number" value="5">
+      </div>
+
+      <div class="form-group">
+        <label>High Weight</label>
+        <input type="number" value="3">
+      </div>
+
+      <div class="form-group">
+        <label>Medium Weight</label>
+        <input type="number" value="2">
+      </div>
+
+      <div class="form-group">
+        <label>Low Weight</label>
+        <input type="number" value="1">
+      </div>
+    </div>
+
+    <div class="settings-card-footer">
+      <button class="btn primary-btn" onclick="showToast('Priority weights updated','success')">
+        Update Weights
+      </button>
+    </div>
+  </div>
+
+</div>
+	
+      <!-- ========== PRIVACY ========== -->
+      <div class="settings-panel" id="panel-privacy">
+
+        <div class="settings-card">
+          <div class="settings-card-header">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            <div><h3>Privacy Controls</h3><p>Control how your information is used</p></div>
+          </div>
+          <div class="settings-card-body">
+            <div class="toggle-row">
+              <div class="toggle-info"><p>Profile Visibility</p><p>Allow authorities to see your profile details</p></div>
+              <label class="toggle-switch"><input type="checkbox" checked/><span class="toggle-slider"></span></label>
+            </div>
+            <div class="toggle-row">
+              <div class="toggle-info"><p>Location Sharing</p><p>Share location for accurate complaint routing</p></div>
+              <label class="toggle-switch"><input type="checkbox" checked/><span class="toggle-slider"></span></label>
+            </div>
+            <div class="toggle-row">
+              <div class="toggle-info"><p>Activity Analytics</p><p>Help us improve by sharing usage patterns</p></div>
+              <label class="toggle-switch"><input type="checkbox"/><span class="toggle-slider"></span></label>
+            </div>
+            <div class="toggle-row">
+              <div class="toggle-info"><p>Public Complaint History</p><p>Allow others to see your resolved complaints</p></div>
+              <label class="toggle-switch"><input type="checkbox"/><span class="toggle-slider"></span></label>
+            </div>
+          </div>
+          <div class="settings-card-footer">
+            <button class="btn primary-btn" onclick="showToast('Privacy settings saved!', 'success')">Save Settings</button>
+          </div>
+        </div>
+
+        <div class="settings-card">
+          <div class="settings-card-header">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="3 6 5 6 21 6"/><path d="M19 6l-1 14a2 2 0 0 1-2 2H8a2 2 0 0 1-2-2L5 6"/><path d="M10 11v6M14 11v6"/><path d="M9 6V4a1 1 0 0 1 1-1h4a1 1 0 0 1 1 1v2"/></svg>
+            <div><h3>Data Management</h3><p>Download or request deletion of your data</p></div>
+          </div>
+          <div class="settings-card-body">
+            <div class="toggle-row">
+              <div class="toggle-info"><p>Download My Data</p><p>Export all your complaints and activity as a file</p></div>
+              <button class="btn secondary-btn btn-sm" onclick="showToast('Data export requested — you\'ll receive an email shortly', 'success')">Request Export</button>
+            </div>
+            <div class="toggle-row">
+              <div class="toggle-info"><p>Clear Search History</p><p>Remove all saved searches and filters</p></div>
+              <button class="btn outline-btn btn-sm" onclick="showToast('Search history cleared', 'success')">Clear</button>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /panel-privacy -->
+
+      <!-- ========== ACCOUNT ========== -->
+      <div class="settings-panel" id="panel-account">
+
+        <div class="settings-card">
+          <div class="settings-card-header">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            <div><h3>Account Details</h3><p>View your account type and registration info</p></div>
+          </div>
+          <div class="settings-card-body">
+            <div class="form-grid-2">
+              <div class="form-group">
+                <label>Account Type</label>
+                <input type="text" value="Admin User" disabled style="background:#f5f5f5;color:var(--text-secondary)"/>
+              </div>
+              <div class="form-group">
+                <label>Member Since</label>
+                <input type="text" value="March 2023" disabled style="background:#f5f5f5;color:var(--text-secondary)"/>
+              </div>
+              <div class="form-group">
+                <label>Account ID</label>
+                <input type="text" value="VOX-20231047" disabled style="background:#f5f5f5;color:var(--text-secondary)"/>
+              </div>
+              <div class="form-group">
+                <label>Verified Status</label>
+                <input type="text" value="✓ Verified" disabled style="background:#f0fff4;color:var(--success-green);font-weight:600"/>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Danger Zone -->
+        <div class="settings-card danger-zone">
+          <div class="settings-card-header" style="border-bottom-color:#ffd0d5;">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="var(--error-red)" stroke-width="2"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"/><line x1="12" y1="9" x2="12" y2="13"/><line x1="12" y1="17" x2="12.01" y2="17"/></svg>
+            <div><h3 style="color:var(--error-red)">Danger Zone</h3><p>Irreversible account actions — proceed with caution</p></div>
+          </div>
+          <div class="settings-card-body">
+            <div class="danger-action">
+              <div class="danger-action-info">
+                <p>Deactivate Account</p>
+                <p>Temporarily disable your account. You can reactivate anytime.</p>
+              </div>
+              <button class="btn outline-btn btn-sm" onclick="showToast('Account deactivation request submitted', 'success')">Deactivate</button>
+            </div>
+            <div class="danger-action">
+              <div class="danger-action-info">
+                <p>Delete Account</p>
+                <p>Permanently delete your account and all associated data. This cannot be undone.</p>
+              </div>
+              <button class="btn danger-btn btn-sm" onclick="confirmDelete()">Delete Account</button>
+            </div>
+          </div>
+        </div>
+
+      </div><!-- /panel-account -->
+
+    </div><!-- /settings-panels -->
+  </div><!-- /settings-layout -->
+</div><!-- /settings-page -->
+</div><!-- /voxify-layout -->
+
+<!-- Toast -->
+<div class="toast" id="toast">
+  <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+    <polyline points="20 6 9 17 4 12"/>
+  </svg>
+  <span id="toastMsg">Saved!</span>
+</div>
+<!-- ================= FOOTER ================= -->
+<footer class="voxify-footer">
+    <div class="footer-container">
+        <div class="footer-grid">
+            <div class="footer-col"><div class="footer-logo">VOX<span>IFY</span></div><p class="footer-about">Empowering citizens with efficient complaint management and real-time outage detection system.</p><div class="footer-social"><a href="#" class="social-icon">📘</a><a href="#" class="social-icon">🐦</a><a href="#" class="social-icon">📷</a><a href="#" class="social-icon">🔗</a></div></div>
+            <div class="footer-col"><h4>Quick Links</h4><ul class="footer-links"><li><a href="dashboard.html">Dashboard</a></li><li><a href="complaint-form.html">Submit Complaint</a></li><li><a href="tracking.html">Track Status</a></li><li><a href="alerts.html">Alerts</a></li><li><a href="feedback.html">Feedback</a></li></ul></div>
+            <div class="footer-col"><h4>Support</h4><ul class="footer-links"><li><a href="help-center.html">Help Center</a></li><li><a href="faqs.html">FAQs</a></li><li><a href="help-center.html">Contact Support</a></li><li><a href="privacy-policy.html">Privacy Policy</a></li><li><a href="terms-of-service.html">Terms of Service</a></li></ul></div>
+            <div class="footer-col"><h4>Contact Us</h4><ul class="footer-contact"><li>📞 <a href="tel:+911234567890">+91 12345 67890</a></li><li>📧 <a href="mailto:support@voxify.com">support@voxify.com</a></li><li>🏢 Mumbai, Maharashtra, India</li></ul><div class="footer-badge"><span>24/7 Support</span><span>ISO Certified</span></div></div>
+        </div>
+        <div class="footer-bottom"><p>&copy; 2025 VOXIFY - Complaint Management & Outage Detection System. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Sitemap</a><a href="#">Accessibility</a><a href="#">Cookie Policy</a></div></div>
+    </div>
+</footer>
+
+<script src="../../js/Admin Dashboard/settings.js"></script>
+</body>
+</html>

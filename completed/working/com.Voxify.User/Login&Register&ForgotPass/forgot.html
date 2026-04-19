@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Voxify | Reset Password</title>
+  <link rel="stylesheet" href="forgot.css" />
+</head>
+<body>
+
+<div class="page-wrapper">
+  <div class="auth-card">
+
+    <!-- LEFT INFO -->
+    <div class="left-info">
+      <h1>Voxify</h1>
+      <p>
+        Voxify helps organizations manage complaints and outages with
+        clarity, speed, and secure communication.
+      </p>
+      <ul>
+        <li>🔐 Secure identity verification</li>
+        <li>⚡ Faster recovery</li>
+        <li>📢 Trusted enterprise system</li>
+      </ul>
+      <div class="badges">
+        <span>Secure</span>
+        <span>Reliable</span>
+        <span>Enterprise‑Ready</span>
+      </div>
+    </div>
+
+    <!-- RIGHT FORM -->
+    <div class="right-form">
+      <h2>Reset Password</h2>
+      <p class="subtitle">Choose verification method</p>
+
+      <form id="resetForm">
+
+        <!-- RESET METHOD -->
+        <div class="field">
+          <label>Reset Method</label>
+          <select id="resetMethod">
+            <option value="">Select method</option>
+            <option value="details">By matching details</option>
+            <option value="question">By answering secret question</option>
+          </select>
+        </div>
+
+        <!-- MATCH DETAILS -->
+        <div id="detailsSection" class="hidden">
+          <div class="field">
+            <label>Full Name</label>
+            <input type="text" id="fullName" />
+            <small class="error" id="nameError"></small>
+          </div>
+
+          <div class="field">
+            <label>Phone Number</label>
+            <input type="text" id="phone" />
+            <small class="error" id="phoneError"></small>
+          </div>
+
+          <div class="field">
+            <label>Email ID</label>
+            <input type="email" id="email" />
+            <small class="error" id="emailError"></small>
+          </div>
+        </div>
+
+        <!-- SECRET QUESTION -->
+        <div id="questionSection" class="hidden">
+          <div class="field">
+            <label>Secret Question</label>
+            <select id="secretQuestion">
+              <option value="">Select question</option>
+              <option value="pet">What was the name of your first pet?</option>
+              <option value="birthCity">In which city were you born?</option>
+              <option value="school">What was the name of your first school?</option>
+              <option value="teacher">What is the name of your favorite teacher?</option>
+              <option value="movie">What is your favorite childhood movie?</option>
+            </select>
+          </div>
+
+          <div class="field">
+            <label>Answer</label>
+            <input type="text" id="secretAnswer" />
+          </div>
+        </div>
+
+        <button type="button" id="verifyBtn">Validate Data</button>
+
+        <!-- PASSWORD SECTION -->
+        <div id="passwordSection" class="hidden">
+
+          <div class="field password-field">
+            <label>New Password</label>
+            <input type="password" id="newPassword" />
+
+            <!-- ✅ REGISTER-STYLE PASSWORD POPUP -->
+            <div class="password-tooltip" id="passwordTooltip">
+              <p id="r-length">• Minimum 8 characters</p>
+              <p id="r-alpha">• At least 1 alphabet</p>
+              <p id="r-digit">• At least 1 number</p>
+              <p id="r-special">• At least 1 special character</p>
+            </div>
+          </div>
+
+          <div class="field">
+            <label>Confirm Password</label>
+            <input type="password" id="confirmPassword" />
+            <small class="error" id="confirmError"></small>
+          </div>
+
+          <button type="submit">Submit</button>
+        </div>
+
+        <p class="login-link">
+          Login Back? <a href="login.html">Login Here</a>
+        </p>
+
+      </form>
+    </div>
+  </div>
+</div>
+
+<script src="forgot.js"></script>
+</body>
+</html>

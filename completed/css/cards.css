@@ -1,0 +1,17 @@
+/* =========================================================
+   GLOBAL CARD STYLES
+========================================================= */
+
+.card {
+  background: var(--bg-card);
+  border-radius: var(--border-radius-lg);
+  box-shadow: var(--shadow-sm);
+  border: 1px solid var(--border-color);
+}
+
+.card-header {
+  padding: 16px 20px;
+  border-bottom: 1px solid var(--border-color);
+  background: var(--bg-muted);
+}
+

@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>VOXIFY | Outage Notifications</title>
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/Admin Dashboard/outage-notifications.css">
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="voxify-navbar">
+    <div class="navbar-left">
+        <button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="navbar-logo">VOX<span>IFY</span></div>
+    </div>
+
+    <div class="navbar-search">
+        <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input type="text" id="searchNotifications" placeholder="Search by area, customer...">
+    </div>
+
+    <div class="navbar-right">
+        <button class="nav-icon-btn" id="notifIconBtn" title="Notifications">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+            </svg>
+            <span class="nav-badge" id="unreadBadge">0</span>
+        </button>
+
+        <div class="status-quick-view">
+            <button class="status-quick-btn" id="statusQuickBtn">
+                <span class="status-dot"></span>
+                <span>Status</span>
+                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="6 9 12 15 18 9"/>
+                </svg>
+            </button>
+            <div class="status-dropdown" id="statusDropdown">
+                <h4>Notification Status</h4>
+                <div class="status-row"><span>Sent</span><span class="status active" id="sentCount">0</span></div>
+                <div class="status-row"><span>Pending</span><span class="status pending" id="pendingCount">0</span></div>
+                <div class="status-row"><span>Failed</span><span class="status resolved" id="failedCount">0</span></div>
+            </div>
+        </div>
+
+        <div class="navbar-profile">
+            <button class="profile-btn" id="profileBtn">
+                <div class="profile-avatar">AD</div>
+                <span class="profile-name">Admin User</span>
+                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="6 9 12 15 18 9"/>
+                </svg>
+            </button>
+            <div class="profile-dropdown" id="profileDropdown">
+                <a href="#"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>My Profile</a>
+                <a href="settings.html"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>Settings</a>
+                <hr>
+                <a href="#" class="logout"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>Logout</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- ================= SIDEBAR (ADMIN) ================= -->
+<aside class="voxify-sidebar" id="voxifySidebar">
+    <div class="sidebar-user-info">
+        <div class="sidebar-avatar">AD</div>
+        <div class="sidebar-user-details">
+            <p>Admin User</p>
+            <p>System Administrator</p>
+        </div>
+    </div>
+    <nav class="sidebar-nav">
+        <div class="sidebar-section-label">Main Menu</div>
+        <a href="admin-dashboard.html">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+            Dashboard
+        </a>
+        <div class="sidebar-section-label">Notifications</div>
+        <a href="outage-notifications.html" class="active">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+            Outage Notifications
+        </a>
+        <a href="alert-delivery.html">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 12 19.79 19.79 0 0 1 1.95 3.4 2 2 0 0 1 3.91 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            Alert Delivery
+        </a>
+        <div class="sidebar-section-label">Templates</div>
+        <a href="#">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><line x1="9" y1="9" x2="15" y2="15"/><line x1="15" y1="9" x2="9" y2="15"/></svg>
+            Notification Templates
+        </a>
+        <div class="sidebar-section-label">Account</div>
+        <a href="settings.html">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            Settings
+        </a>
+    </nav>
+</aside>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- ================= MAIN LAYOUT ================= -->
+<div class="voxify-layout" id="voxifyLayout">
+    <div class="notifications-page">
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="header-accent"></div>
+            <h1>Outage Notifications</h1>
+            <p>Create, preview, and send automated customer alerts for service outages</p>
+        </div>
+
+        <!-- Stats Summary -->
+        <div class="stats-row">
+            <div class="stat-card">
+                <div class="stat-value" id="totalSent">0</div>
+                <div class="stat-label">Total Sent</div>
+            </div>
+            <div class="stat-card success">
+                <div class="stat-value" id="deliveredCount">0</div>
+                <div class="stat-label">Delivered</div>
+            </div>
+            <div class="stat-card warning">
+                <div class="stat-value" id="pendingCountStat">0</div>
+                <div class="stat-label">Pending</div>
+            </div>
+            <div class="stat-card critical">
+                <div class="stat-value" id="failedCountStat">0</div>
+                <div class="stat-label">Failed</div>
+            </div>
+        </div>
+
+        <!-- Two Column Layout -->
+        <div class="two-column-grid">
+            
+            <!-- LEFT: Create Notification -->
+            <div class="settings-card">
+                <div class="settings-card-header">
+                    <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/>
+                        <path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/>
+                    </svg>
+                    <div>
+                        <h3>Create Outage Notification</h3>
+                        <p>Fill details to notify customers about service disruption</p>
+                    </div>
+                </div>
+                <div class="settings-card-body">
+                    <form id="notificationForm">
+                        <div class="form-grid">
+                            <div class="form-group">
+                                <label>Affected Area / Location <span class="required">*</span></label>
+                                <input type="text" id="affectedArea" placeholder="e.g., Andheri West, Mumbai" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Service Type <span class="required">*</span></label>
+                                <select id="serviceType" required>
+                                    <option value="">Select Service</option>
+                                    <option value="Broadband">Broadband Internet</option>
+                                    <option value="Mobile Network">Mobile Network</option>
+                                    <option value="TV Service">TV Service</option>
+                                    <option value="Voice Service">Voice Service</option>
+                                    <option value="All Services">All Services</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Issue / Problem <span class="required">*</span></label>
+                                <input type="text" id="issueDescription" placeholder="e.g., Fiber cut, Network outage" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Estimated Resolution Time (ETA) <span class="required">*</span></label>
+                                <input type="datetime-local" id="etaTime" required>
+                            </div>
+                            <div class="form-group">
+                                <label>Severity Level</label>
+                                <select id="severityLevel">
+                                    <option value="critical">🔴 Critical - Widespread outage</option>
+                                    <option value="high">🟠 High - Major disruption</option>
+                                    <option value="medium">🟡 Medium - Partial service</option>
+                                    <option value="low">🟢 Low - Minor issue</option>
+                                </select>
+                            </div>
+                            <div class="form-group">
+                                <label>Affected Customers (Approx)</label>
+                                <input type="number" id="affectedCustomers" placeholder="Number of customers" value="500">
+                            </div>
+                        </div>
+                        
+                        <!-- Template Selector -->
+                        <div class="form-group">
+                            <label>Notification Template</label>
+                            <select id="templateSelect">
+                                <option value="default">Default Outage Template</option>
+                                <option value="critical">Critical Outage Template</option>
+                                <option value="maintenance">Scheduled Maintenance</option>
+                                <option value="resolved">Service Restored Template</option>
+                            </select>
+                        </div>
+
+                        <!-- Message Preview Area -->
+                        <div class="preview-section">
+                            <div class="preview-header">
+                                <span>📧 Notification Preview</span>
+                                <button type="button" class="refresh-preview" id="refreshPreviewBtn">🔄 Refresh Preview</button>
+                            </div>
+                            <div id="notificationPreview" class="notification-preview">
+                                <!-- Live preview will appear here -->
+                            </div>
+                        </div>
+
+                        <!-- Delivery Channels -->
+                        <div class="delivery-channels">
+                            <label>Delivery Channels</label>
+                            <div class="channel-options">
+                                <label class="channel-checkbox">
+                                    <input type="checkbox" id="channelEmail" checked> 📧 Email
+                                </label>
+                                <label class="channel-checkbox">
+                                    <input type="checkbox" id="channelSms" checked> 📱 SMS
+                                </label>
+                                <label class="channel-checkbox">
+                                    <input type="checkbox" id="channelPush"> 🔔 Push Notification
+                                </label>
+                                <label class="channel-checkbox">
+                                    <input type="checkbox" id="channelWebhook"> 🔗 Webhook
+                                </label>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+                <div class="settings-card-footer">
+                    <button class="btn secondary-btn" id="clearFormBtn">Clear Form</button>
+                    <button class="btn primary-btn" id="sendNotificationBtn">📨 Send Notification</button>
+                </div>
+            </div>
+
+            <!-- RIGHT: Notification History & Status -->
+            <div class="settings-card">
+                <div class="settings-card-header">
+                    <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/>
+                    </svg>
+                    <div>
+                        <h3>Notification History</h3>
+                        <p>Recently sent outage alerts with delivery status</p>
+                    </div>
+                    <span class="live-badge">● LIVE</span>
+                </div>
+                <div class="settings-card-body">
+                    <div class="history-filters">
+                        <input type="text" id="historySearch" placeholder="Search by area..." class="history-search">
+                        <select id="statusFilter" class="status-filter">
+                            <option value="all">All Status</option>
+                            <option value="sent">Sent</option>
+                            <option value="delivered">Delivered</option>
+                            <option value="pending">Pending</option>
+                            <option value="failed">Failed</option>
+                        </select>
+                    </div>
+                    <div id="notificationHistory" class="notification-history">
+                        <div class="empty-state">No notifications sent yet</div>
+                    </div>
+                </div>
+                <div class="settings-card-footer">
+                    <button class="btn secondary-btn" id="clearHistoryBtn">Clear History</button>
+                    <button class="btn outline-btn" id="exportHistoryBtn">📥 Export History</button>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+<!-- ================= FOOTER ================= -->
+<footer class="voxify-footer">
+    <div class="footer-container">
+        <div class="footer-grid">
+            <div class="footer-col"><div class="footer-logo">VOX<span>IFY</span></div><p class="footer-about">Empowering citizens with efficient complaint management and real-time outage detection system.</p><div class="footer-social"><a href="#" class="social-icon">📘</a><a href="#" class="social-icon">🐦</a><a href="#" class="social-icon">📷</a><a href="#" class="social-icon">🔗</a></div></div>
+            <div class="footer-col"><h4>Quick Links</h4><ul class="footer-links"><li><a href="dashboard.html">Dashboard</a></li><li><a href="complaint-form.html">Submit Complaint</a></li><li><a href="tracking.html">Track Status</a></li><li><a href="alerts.html">Alerts</a></li><li><a href="feedback.html">Feedback</a></li></ul></div>
+            <div class="footer-col"><h4>Support</h4><ul class="footer-links"><li><a href="help-center.html">Help Center</a></li><li><a href="faqs.html">FAQs</a></li><li><a href="help-center.html">Contact Support</a></li><li><a href="privacy-policy.html">Privacy Policy</a></li><li><a href="terms-of-service.html">Terms of Service</a></li></ul></div>
+            <div class="footer-col"><h4>Contact Us</h4><ul class="footer-contact"><li>📞 <a href="tel:+911234567890">+91 12345 67890</a></li><li>📧 <a href="mailto:support@voxify.com">support@voxify.com</a></li><li>🏢 Mumbai, Maharashtra, India</li></ul><div class="footer-badge"><span>24/7 Support</span><span>ISO Certified</span></div></div>
+        </div>
+        <div class="footer-bottom"><p>&copy; 2025 VOXIFY - Complaint Management & Outage Detection System. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Sitemap</a><a href="#">Accessibility</a><a href="#">Cookie Policy</a></div></div>
+    </div>
+</footer>
+
+
+<div class="toast" id="toast">
+    <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+        <polyline points="20 6 9 17 4 12"/>
+    </svg>
+    <span id="toastMsg"></span>
+</div>
+
+<script src="../../js/Admin Dashboard/outage-notifications.js"></script>
+</body>
+</html>

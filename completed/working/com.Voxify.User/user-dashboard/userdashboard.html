@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>VOXIFY | User Dashboard</title>
+  <link rel="stylesheet" href="userdashboard.css">
+</head>
+
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="voxify-navbar">
+
+  <!-- Left: Toggle + Logo -->
+  <div class="navbar-left">
+    <button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">
+      <span></span>
+      <span></span>
+      <span></span>
+    </button>
+    <div class="navbar-logo">VOX<span>IFY</span></div>
+  </div>
+
+  <!-- Center: Search -->
+  <div class="navbar-search">
+    <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+      <circle cx="11" cy="11" r="8"/><line x1="21" y1="21" x2="16.65" y2="16.65"/>
+    </svg>
+    <input type="text" placeholder="Search complaints, outages..." />
+  </div>
+
+  <!-- Right: Icons -->
+  <div class="navbar-right">
+
+    <!-- Notifications -->
+    <button class="nav-icon-btn" title="Notifications">
+      <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+        <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+        <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+      </svg>
+      <span class="nav-badge">4</span>
+    </button>
+
+    <!-- Complaint Status Quick View -->
+    <div class="status-quick-view">
+      <button class="status-quick-btn" id="statusQuickBtn">
+        <span class="status-dot"></span>
+        <span>Status</span>
+        <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </button>
+      <div class="status-dropdown" id="statusDropdown">
+        <h4>Complaint Status</h4>
+        <div class="status-row">
+          <span>Active</span>
+          <span class="status active">3</span>
+        </div>
+        <div class="status-row">
+          <span>Pending</span>
+          <span class="status pending">1</span>
+        </div>
+        <div class="status-row">
+          <span>Resolved</span>
+          <span class="status resolved">5</span>
+        </div>
+      </div>
+    </div>
+
+    <!-- Profile -->
+    <div class="navbar-profile">
+      <button class="profile-btn" id="profileBtn">
+        <div class="profile-avatar">JD</div>
+        <span class="profile-name">John Doe</span>
+        <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+          <polyline points="6 9 12 15 18 9"/>
+        </svg>
+      </button>
+      <div class="profile-dropdown" id="profileDropdown">
+        <a href="#">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+          My Profile
+        </a>
+        <a href="#">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+          Settings
+        </a>
+        <hr>
+        <a href="../Login&Register&ForgotPass/login.html" class="logout">
+          <svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>
+          Logout
+        </a>
+      </div>
+    </div>
+
+  </div>
+</nav>
+
+<!-- ================= SIDEBAR ================= -->
+<aside class="voxify-sidebar" id="voxifySidebar">
+
+  <div class="sidebar-user-info">
+    <div class="sidebar-avatar">JD</div>
+    <div class="sidebar-user-details">
+      <p>John Doe</p>
+      <p>Citizen User</p>
+    </div>
+  </div>
+
+  <nav class="sidebar-nav">
+
+    <div class="sidebar-section-label">Main Menu</div>
+
+    <a href="#" class="active">
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+      Dashboard
+    </a>
+
+    <a href="../Complaint Registeration Form/complaint-registration.html">
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+      Submit Complaint
+    </a>
+
+<!--     <a href="">
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+      My Complaints
+      <span class="nav-badge-dot">3</span>
+    </a>
+     -->
+
+    <a href="../TrackDashboard_Page/tracking.html">
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      Track Status
+    </a>
+
+    <div class="sidebar-section-label">Alerts</div>
+
+    <a href="../Notification/alerts.html">
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+      Notifications
+      <span class="nav-badge-dot">4</span>
+    </a>
+
+    <a href="../OutageAlert_page/outage-alerts.html">
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      Outage Alerts
+    </a>
+
+    <div class="sidebar-section-label">Account</div>
+
+    <a href="../FeedbackAndRating_Page/feedback.html">
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      Feedback & Ratings
+    </a>
+
+    <a href="../User settings/settings.html">
+      <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+       Settings
+    </a>
+
+  </nav>
+</aside>
+
+<!-- Overlay for mobile -->
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- ================= MAIN LAYOUT ================= -->
+<div class="voxify-layout" id="voxifyLayout">
+
+<section id="voxify-user-dashboard">
+
+  <!-- ================= HEADER ================= -->
+  <header class="dashboard-header">
+    <div class="header-accent"></div>
+    <h2 class="dashboard-title">Welcome to VOXIFY</h2>
+    <p class="dashboard-subtitle">
+      Manage complaints, track outages, and take quick actions from one place
+    </p>
+  </header>
+
+  <!-- ================= MAIN GRID ================= -->
+  <div class="dashboard-grid">
+
+    <!-- ===== STATS ===== -->
+    <section class="dashboard-stats">
+
+      <div class="stat-card active">
+        <h3>3</h3>
+        <p>Active Complaints</p>
+      </div>
+
+      <div class="stat-card warning">
+        <h3>1</h3>
+        <p>Pending</p>
+      </div>
+
+      <div class="stat-card success">
+        <h3>5</h3>
+        <p>Resolved</p>
+      </div>
+
+      <div class="stat-card danger">
+        <h3>1</h3>
+        <p>Active Outage</p>
+      </div>
+
+    </section>
+
+    <!-- ===== ACTIONS ===== -->
+    <section class="dashboard-actions">
+
+      <div class="action-card highlight">
+        <h3>Register Complaint</h3>
+        <p>Raise an issue related to public or utility services</p>
+        <button class="btn primary-btn"><a class="primary-btn" href="../Complaint Registeration Form/complaint-registration.html">Register</a></button>
+      </div>
+
+     
+
+      <div class="action-card highlight-secondary">
+        <h3>Track Status</h3>
+        <p>View progress and updates of your complaints</p>
+        <button class="btn primary-btn"><a class="primary-btn" href="../TrackDashboard_Page/tracking.html">Track</a></button></div>
+
+      <div class="action-card highlight-secondary">
+        <h3>Settings</h3>
+        <p>Manage profile, alerts, and notification preferences</p>
+        <button class="btn primary-btn"><a class="primary-btn" href="../User settings/settings.html">Setting</a></button>
+      </div>
+
+    </section>
+
+    <!-- ===== ACTIVITY ===== -->
+    <section class="dashboard-activity">
+      <h3 class="section-title">Recent Activity</h3>
+
+      <div class="activity-item">
+        <span>Internet Connectivity Issue</span>
+        <span class="status active">Active</span>
+      </div>
+
+      <div class="activity-item">
+        <span>Water Supply Disruption</span>
+        <span class="status pending">Pending</span>
+      </div>
+
+      <div class="activity-item">
+        <span>Street Light Repair</span>
+        <span class="status resolved">Resolved</span>
+      </div>
+
+    </section>
+
+  </div>
+</section>
+
+</div><!-- end voxify-layout -->
+
+<script src="userdashboard.js"></script>
+</body>
+</html>

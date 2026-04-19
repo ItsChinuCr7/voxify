@@ -1,0 +1,266 @@
+/* =====================
+   GLOBAL
+===================== */
+* {
+  box-sizing: border-box;
+  font-family: Arial, sans-serif;
+}
+
+body {
+  margin: 0;
+  min-height: 100vh;
+  background: linear-gradient(120deg, #1F4FD8, #E8F0FF, #FFFFFF);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.page-wrapper {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+}
+
+/* =====================
+   CARD LAYOUT
+===================== */
+.auth-card {
+  width: 840px;
+  height: 520px;               /* ✅ FIXED HEIGHT */
+  display: flex;
+  background: #fff;
+  border-radius: 10px;
+  overflow: hidden;            /* ✅ prevent outer scroll */
+  box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+/* =====================
+   LEFT INFO
+===================== */
+.left-info {
+  width: 40%;
+  padding: 26px 32px;
+  background: linear-gradient(160deg, #0B1F44, #1F4FD8);
+  color: white;
+}
+
+.left-info p {
+  font-size: 14px;
+}
+
+.left-info ul {
+  list-style: none;
+  padding-left: 0;
+}
+
+.left-info li {
+  margin: 8px 0;
+}
+
+.badges span {
+  display: inline-block;
+  background: rgba(255,255,255,0.2);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  margin-right: 6px;
+}
+
+/* =====================
+   RIGHT FORM (SCROLLABLE)
+===================== */
+.right-form {
+  width: 60%;
+  padding: 26px 32px;
+
+  height: 100%;               /* ✅ take full card height */
+  overflow-y: auto;           /* ✅ scroll inside */
+}
+
+/* Subtle scrollbar (Chrome, Edge) */
+.right-form::-webkit-scrollbar {
+  width: 6px;
+}
+
+.right-form::-webkit-scrollbar-thumb {
+  background: rgba(0,0,0,0.25);
+  border-radius: 10px;
+}
+
+.right-form::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+/* =====================
+   FORM ELEMENTS
+===================== */
+.subtitle {
+  color: #5F6368;
+  margin-bottom: 16px;
+}
+
+.field {
+  margin-bottom: 12px;
+  position: relative;
+}
+
+label {
+  display: block;
+  font-size: 13px;
+  margin-bottom: 6px;
+}
+
+input,
+select {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #E0E3EB;
+  border-radius: 4px;
+  font-size: 14px;
+}
+
+/* =====================
+   BUTTON
+===================== */
+button {
+  width: 100%;
+  padding: 12px;
+  background: #1F4FD8;
+  border: none;
+  color: #fff;
+  border-radius: 4px;
+  font-size: 15px;
+  cursor: pointer;
+  margin-top: 8px;
+}
+
+/* =====================
+   STATES & ERRORS
+===================== */
+.hidden {
+  display: none;
+}
+
+.error {
+  color: #DC3545;
+  font-size: 12px;
+  margin-top: 4px;
+}
+
+.input-error {
+  border-color: #DC3545 !important;
+}
+
+.input-success {
+  border-color: #28A745 !important;
+}
+
+/* =====================
+   PASSWORD TOOLTIP (REGISTER STYLE)
+===================== */
+.password-field {
+  position: relative;
+}
+
+.password-tooltip {
+  position: absolute;
+  top: calc(100% + 6px);
+  left: 0;
+  width: 100%;
+  background: #fff;
+  border: 1px solid #E0E3EB;
+  border-radius: 6px;
+  padding: 8px 10px;
+  font-size: 12px;
+  box-shadow: 0 6px 18px rgba(0,0,0,0.12);
+  opacity: 0;
+  transform: translateY(-5px);
+  transition: all 0.25s ease;
+  z-index: 10;
+  pointer-events: none;
+}
+
+.password-tooltip.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.password-tooltip p {
+  margin: 4px 0;
+  color: #DC3545;
+}
+
+.password-tooltip p.valid {
+  color: #28A745;
+}
+
+/* =====================
+   LOGIN LINK
+===================== */
+.login-link {
+  margin-top: 12px;
+  text-align: center;
+}
+/* =========================
+   MOBILE RESPONSIVE
+========================= */
+@media (max-width: 768px) {
+
+  body {
+    align-items: flex-start;       /* allow natural vertical flow */
+  }
+
+  .page-wrapper {
+    padding: 16px;
+  }
+
+  .auth-card {
+    flex-direction: column;        /* ✅ blue on top, white below */
+    width: 100%;
+    height: auto;                  /* ✅ allow natural height */
+    max-width: 420px;              /* ✅ mobile-friendly width */
+  }
+
+  /* BLUE SECTION */
+  .left-info {
+    width: 100%;
+    border-radius: 10px 10px 0 0;
+  }
+
+  /* WHITE FORM */
+  .right-form {
+    width: 100%;
+    height: auto;                  /* ✅ no forced clipping */
+    max-height: none;
+    overflow-y: visible;           /* ✅ no scroll cutoff */
+    border-radius: 0 0 10px 10px;
+  }
+
+  /* FORM FIELDS */
+  .field {
+    margin-bottom: 14px;
+  }
+
+  input,
+  select {
+    font-size: 15px;               /* ✅ better touch usability */
+  }
+
+  button {
+    font-size: 16px;
+  }
+
+  /* PASSWORD TOOLTIP */
+  .password-tooltip {
+    position: static;              /* ✅ avoids clipping */
+    width: 100%;
+    margin-top: 6px;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.12);
+    pointer-events: auto;
+  }
+
+  .password-tooltip.show {
+    opacity: 1;
+    transform: none;
+  }
+}

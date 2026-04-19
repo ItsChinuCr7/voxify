@@ -1,0 +1,480 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>VOXIFY | Feedback & Ratings</title>
+  <link rel="stylesheet" href="../../css/common.css"/>
+  <link rel="stylesheet" href="../../css/User/feedback.css"/>
+	<link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/design-tokens.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <link rel="stylesheet" href="../../css/cards.css">
+    <link rel="stylesheet" href="../../css/buttons.css">
+    <link rel="stylesheet" href="../../css/typography.css">
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="voxify-navbar">
+    <div class="navbar-left">
+        <button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="navbar-logo">VOX<span>IFY</span></div>
+    </div>
+
+    <div class="navbar-search">
+        <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input type="text" id="searchInput" placeholder="Search incidents, regions, services...">
+    </div>
+
+    <div class="navbar-right">
+        <button class="nav-icon-btn" id="notifIconBtn" title="Notifications">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+            </svg>
+            <span class="nav-badge" id="globalUnreadBadge">3</span>
+        </button>
+
+        <div class="status-quick-view">
+            <button class="status-quick-btn" id="statusQuickBtn">
+                <span class="status-dot"></span>
+                <span>Network Status</span>
+                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="6 9 12 15 18 9"/>
+                </svg>
+            </button>
+            <div class="status-dropdown" id="statusDropdown">
+                <h4>Network Health</h4>
+                <div class="status-row"><span>Active Outages</span><span class="status active">4</span></div>
+                <div class="status-row"><span>Degraded Services</span><span class="status pending">2</span></div>
+                <div class="status-row"><span>All Systems Normal</span><span class="status resolved">12</span></div>
+            </div>
+        </div>
+
+        <div class="navbar-profile">
+            <button class="profile-btn" id="profileBtn">
+                <div class="profile-avatar">NK</div>
+                <span class="profile-name">Nikhil Kumar</span>
+                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="6 9 12 15 18 9"/>
+                </svg>
+            </button>
+            <div class="profile-dropdown" id="profileDropdown">
+                <a href="#"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>My Profile</a>
+                <a href="settings.html"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>Settings</a>
+                <hr>
+                <a href="../Authentication/login.html" class="logout"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>Logout</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- ================= SIDEBAR ================= -->
+<aside class="voxify-sidebar" id="voxifySidebar">
+    <div class="sidebar-user-info">
+        <div class="sidebar-avatar">NK</div>
+        <div class="sidebar-user-details">
+            <p>Nikhil Kumar</p>
+            <p>NOC Lead Engineer</p>
+        </div>
+    </div>
+    <nav class="sidebar-nav">
+        <div class="sidebar-section-label">Command Center</div>
+        <a href="noc-dashboard.html" >
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+            NOC Dashboard
+        </a>
+        <a href="live-monitoring.html">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Live Monitoring
+        </a>
+        <div class="sidebar-section-label">Incident Management</div>
+        <a href="outage-alerts.html">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            Active Outages
+            <span class="nav-badge-dot" style="background:#ef4444;">4</span>
+        </a>
+        <a href="auto-detection.html">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="3"/></svg>
+            Auto Detection
+        </a>
+        <div class="sidebar-section-label">Escalation</div>
+        <a href="manual-escalation.html">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Manual Escalation
+        </a>
+        <!-- <a href="#">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            Auto Escalation Rules
+        </a> -->
+        <!-- <div class="sidebar-section-label">Reports</div>
+        <a href="#">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M2 20L22 20"/><path d="M4 16L8 8L13 12L20 4"/></svg>
+            Outage Reports
+        </a>
+        <a href="#">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            SLA Reports
+        </a> -->
+        <div class="sidebar-section-label">Account</div>
+        <a href="settings.html">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            Settings
+        </a>
+    </nav>
+</aside>
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- ================= MAIN LAYOUT ================= -->
+<div class="voxify-layout" id="voxifyLayout">
+<div class="feedback-page">
+
+  <!-- Page Header -->
+  <div class="feedback-page-header">
+    <div class="header-accent"></div>
+    <h2>Feedback &amp; Ratings</h2>
+    <p>Rate your experience and help us improve our services</p>
+  </div>
+
+  <!-- Stats Strip -->
+  <div class="feedback-stats-strip">
+    <div class="fstat-card">
+      <div class="fstat-icon fstat-blue">
+        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="12 2 15.09 8.26 22 9.27 17 14.14 18.18 21.02 12 17.77 5.82 21.02 7 14.14 2 9.27 8.91 8.26 12 2"/></svg>
+      </div>
+      <div>
+        <p class="fstat-value">4.2</p>
+        <p class="fstat-label">Avg. Rating</p>
+      </div>
+    </div>
+    <div class="fstat-card">
+      <div class="fstat-icon fstat-green">
+        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="20 6 9 17 4 12"/></svg>
+      </div>
+      <div>
+        <p class="fstat-value">5</p>
+        <p class="fstat-label">Feedback Given</p>
+      </div>
+    </div>
+    <div class="fstat-card">
+      <div class="fstat-icon fstat-amber">
+        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+      </div>
+      <div>
+        <p class="fstat-value">2</p>
+        <p class="fstat-label">Pending</p>
+      </div>
+    </div>
+    <div class="fstat-card">
+      <div class="fstat-icon fstat-red">
+        <svg width="20" height="20" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+      </div>
+      <div>
+        <p class="fstat-value">3</p>
+        <p class="fstat-label">Comments</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Two-column layout -->
+  <div class="feedback-layout">
+
+    <!-- LEFT: Pending Feedback -->
+    <div class="feedback-main">
+
+      <!-- Pending to rate -->
+      <div class="fb-card">
+        <div class="fb-card-header">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+          <div><h3>Awaiting Your Feedback</h3><p>Resolved complaints that need your rating</p></div>
+          <span class="pending-badge">2 Pending</span>
+        </div>
+        <div class="fb-card-body">
+
+          <!-- Pending Item 1 -->
+          <div class="pending-feedback-item" id="pending-1">
+            <div class="pf-top">
+              <div class="pf-meta">
+                <span class="pf-ticket">#TKT-2041</span>
+                <span class="pf-tag tag-infra">Infrastructure</span>
+              </div>
+              <span class="pf-date">Resolved Apr 10, 2026</span>
+            </div>
+            <p class="pf-title">Pothole on Main Street near Andheri Station</p>
+            <p class="pf-desc">The reported pothole was filled and road surface repaired by the municipal team.</p>
+            <div class="pf-rate-row">
+              <span class="pf-rate-label">How satisfied were you?</span>
+              <div class="star-group" data-id="pending-1">
+                <button class="star-btn" data-val="1">★</button>
+                <button class="star-btn" data-val="2">★</button>
+                <button class="star-btn" data-val="3">★</button>
+                <button class="star-btn" data-val="4">★</button>
+                <button class="star-btn" data-val="5">★</button>
+              </div>
+            </div>
+            <textarea class="pf-comment" placeholder="Optional: Share your experience..."></textarea>
+            <div class="pf-actions">
+              <button class="btn primary-btn btn-sm" onclick="submitFeedback('pending-1', this)">Submit Feedback</button>
+              <button class="btn secondary-btn btn-sm" onclick="skipFeedback('pending-1')">Skip for Now</button>
+            </div>
+          </div>
+
+          <!-- Pending Item 2 -->
+          <div class="pending-feedback-item" id="pending-2">
+            <div class="pf-top">
+              <div class="pf-meta">
+                <span class="pf-ticket">#TKT-2038</span>
+                <span class="pf-tag tag-utility">Utility</span>
+              </div>
+              <span class="pf-date">Resolved Apr 8, 2026</span>
+            </div>
+            <p class="pf-title">Street light malfunction near Juhu Beach Road</p>
+            <p class="pf-desc">The faulty street light was replaced and power connectivity restored.</p>
+            <div class="pf-rate-row">
+              <span class="pf-rate-label">How satisfied were you?</span>
+              <div class="star-group" data-id="pending-2">
+                <button class="star-btn" data-val="1">★</button>
+                <button class="star-btn" data-val="2">★</button>
+                <button class="star-btn" data-val="3">★</button>
+                <button class="star-btn" data-val="4">★</button>
+                <button class="star-btn" data-val="5">★</button>
+              </div>
+            </div>
+            <textarea class="pf-comment" placeholder="Optional: Share your experience..."></textarea>
+            <div class="pf-actions">
+              <button class="btn primary-btn btn-sm" onclick="submitFeedback('pending-2', this)">Submit Feedback</button>
+              <button class="btn secondary-btn btn-sm" onclick="skipFeedback('pending-2')">Skip for Now</button>
+            </div>
+          </div>
+
+        </div>
+      </div>
+
+      <!-- Past Feedback -->
+      <div class="fb-card">
+        <div class="fb-card-header">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+          <div><h3>Past Feedback</h3><p>Your previously submitted ratings</p></div>
+          <div class="fb-filter">
+            <select id="filterSelect" onchange="filterFeedback()">
+              <option value="all">All</option>
+              <option value="5">5 Stars</option>
+              <option value="4">4 Stars</option>
+              <option value="3">3 Stars</option>
+              <option value="1-2">1–2 Stars</option>
+            </select>
+          </div>
+        </div>
+        <div class="fb-card-body" id="pastFeedbackList">
+
+          <div class="past-feedback-item" data-stars="5">
+            <div class="past-top">
+              <div>
+                <span class="pf-ticket">#TKT-2030</span>
+                <span class="pf-tag tag-sanitation">Sanitation</span>
+              </div>
+              <div class="past-stars filled-5">★★★★★</div>
+            </div>
+            <p class="pf-title">Garbage overflow near Lokhandwala Market</p>
+            <p class="past-comment">"Resolved very quickly. The team was professional and the area was cleaned within hours. Great work!"</p>
+            <span class="past-date">Rated Apr 5, 2026</span>
+          </div>
+
+          <div class="past-feedback-item" data-stars="4">
+            <div class="past-top">
+              <div>
+                <span class="pf-ticket">#TKT-2021</span>
+                <span class="pf-tag tag-infra">Infrastructure</span>
+              </div>
+              <div class="past-stars filled-4">★★★★☆</div>
+            </div>
+            <p class="pf-title">Broken footpath tiles at DN Road</p>
+            <p class="past-comment">"Good resolution, though it took longer than expected. The end result was satisfactory."</p>
+            <span class="past-date">Rated Mar 28, 2026</span>
+          </div>
+
+          <div class="past-feedback-item" data-stars="3">
+            <div class="past-top">
+              <div>
+                <span class="pf-ticket">#TKT-2015</span>
+                <span class="pf-tag tag-utility">Utility</span>
+              </div>
+              <div class="past-stars filled-3">★★★☆☆</div>
+            </div>
+            <p class="pf-title">Water logging on SV Road during rain</p>
+            <p class="past-comment">"Issue was addressed but only partially. Waterlogging still occurs in heavy rain."</p>
+            <span class="past-date">Rated Mar 18, 2026</span>
+          </div>
+
+          <div class="past-feedback-item" data-stars="5">
+            <div class="past-top">
+              <div>
+                <span class="pf-ticket">#TKT-2009</span>
+                <span class="pf-tag tag-safety">Safety</span>
+              </div>
+              <div class="past-stars filled-5">★★★★★</div>
+            </div>
+            <p class="pf-title">Broken traffic signal at Linking Road junction</p>
+            <p class="past-comment">"Excellent and prompt response! Signal was fixed within 24 hours of reporting."</p>
+            <span class="past-date">Rated Mar 10, 2026</span>
+          </div>
+
+          <div class="past-feedback-item" data-stars="2">
+            <div class="past-top">
+              <div>
+                <span class="pf-ticket">#TKT-1998</span>
+                <span class="pf-tag tag-infra">Infrastructure</span>
+              </div>
+              <div class="past-stars filled-2">★★☆☆☆</div>
+            </div>
+            <p class="pf-title">Damaged boundary wall near school zone</p>
+            <p class="past-comment">"Took over 3 weeks, communication was poor. Not happy with the timeline."</p>
+            <span class="past-date">Rated Feb 22, 2026</span>
+          </div>
+
+        </div>
+      </div>
+    </div>
+
+    <!-- RIGHT: General Feedback + Summary -->
+    <div class="feedback-side">
+
+      <!-- General Feedback Form -->
+      <div class="fb-card">
+        <div class="fb-card-header">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+          <div><h3>General Feedback</h3><p>Share your overall experience</p></div>
+        </div>
+        <div class="fb-card-body">
+
+          <div class="general-rating-block">
+            <p class="gen-rate-label">Overall Satisfaction</p>
+            <div class="star-group large-stars" data-id="general">
+              <button class="star-btn" data-val="1">★</button>
+              <button class="star-btn" data-val="2">★</button>
+              <button class="star-btn" data-val="3">★</button>
+              <button class="star-btn" data-val="4">★</button>
+              <button class="star-btn" data-val="5">★</button>
+            </div>
+            <p class="gen-rate-hint" id="generalRateHint">Tap to rate</p>
+          </div>
+
+          <div class="form-group">
+            <label>Category</label>
+            <select>
+              <option>-- Select Category --</option>
+              <option>Complaint Resolution Speed</option>
+              <option>Agent Communication</option>
+              <option>Platform Usability</option>
+              <option>Outage Alert System</option>
+              <option>Overall Service</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label>Your Feedback</label>
+            <textarea id="generalComment" placeholder="Share your thoughts, suggestions, or complaints about the service..." style="min-height:100px;"></textarea>
+          </div>
+
+          <div class="form-group">
+            <label>Would you recommend VOXIFY?</label>
+            <div class="recommend-options">
+              <button class="rec-btn" id="recYes" onclick="selectRecommend('yes')">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M14 9V5a3 3 0 0 0-3-3l-4 9v11h11.28a2 2 0 0 0 2-1.7l1.38-9a2 2 0 0 0-2-2.3H14z"/><path d="M7 22H4a2 2 0 0 1-2-2v-7a2 2 0 0 1 2-2h3"/></svg>
+                Yes, definitely
+              </button>
+              <button class="rec-btn" id="recMaybe" onclick="selectRecommend('maybe')">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+                Maybe
+              </button>
+              <button class="rec-btn" id="recNo" onclick="selectRecommend('no')">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M10 15v4a3 3 0 0 0 3 3l4-9V2H5.72a2 2 0 0 0-2 1.7l-1.38 9a2 2 0 0 0 2 2.3H10z"/><path d="M17 2h2.67A2.31 2.31 0 0 1 22 4v7a2.31 2.31 0 0 1-2.33 2H17"/></svg>
+                Not really
+              </button>
+            </div>
+          </div>
+
+        </div>
+        <div class="fb-card-footer">
+          <button class="btn secondary-btn" onclick="clearGeneral()">Clear</button>
+          <button class="btn primary-btn" onclick="submitGeneral()">Submit Feedback</button>
+        </div>
+      </div>
+
+      <!-- Rating Summary -->
+      <div class="fb-card">
+        <div class="fb-card-header">
+          <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+          <div><h3>Rating Summary</h3><p>Your feedback distribution</p></div>
+        </div>
+        <div class="fb-card-body">
+          <div class="rating-summary-top">
+            <div class="big-avg">4.2</div>
+            <div class="avg-stars">★★★★☆</div>
+            <p class="avg-sub">Based on 5 ratings</p>
+          </div>
+          <div class="rating-bars">
+            <div class="rbar-row">
+              <span class="rbar-label">5★</span>
+              <div class="rbar-track"><div class="rbar-fill rbar-5" style="width:60%"></div></div>
+              <span class="rbar-count">3</span>
+            </div>
+            <div class="rbar-row">
+              <span class="rbar-label">4★</span>
+              <div class="rbar-track"><div class="rbar-fill rbar-4" style="width:20%"></div></div>
+              <span class="rbar-count">1</span>
+            </div>
+            <div class="rbar-row">
+              <span class="rbar-label">3★</span>
+              <div class="rbar-track"><div class="rbar-fill rbar-3" style="width:20%"></div></div>
+              <span class="rbar-count">1</span>
+            </div>
+            <div class="rbar-row">
+              <span class="rbar-label">2★</span>
+              <div class="rbar-track"><div class="rbar-fill rbar-2" style="width:0%"></div></div>
+              <span class="rbar-count">0</span>
+            </div>
+            <div class="rbar-row">
+              <span class="rbar-label">1★</span>
+              <div class="rbar-track"><div class="rbar-fill rbar-1" style="width:0%"></div></div>
+              <span class="rbar-count">0</span>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div><!-- /feedback-side -->
+  </div><!-- /feedback-layout -->
+
+</div><!-- /feedback-page -->
+</div><!-- /voxify-layout -->
+
+<!-- Toast -->
+<div class="toast" id="toast">
+  <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+    <polyline points="20 6 9 17 4 12"/>
+  </svg>
+  <span id="toastMsg">Done!</span>
+</div>
+<!-- ================= FOOTER ================= -->
+<footer class="voxify-footer">
+    <div class="footer-container">
+        <div class="footer-grid">
+            <div class="footer-col"><div class="footer-logo">VOX<span>IFY</span></div><p class="footer-about">Empowering citizens with efficient complaint management and real-time outage detection system.</p><div class="footer-social"><a href="#" class="social-icon">📘</a><a href="#" class="social-icon">🐦</a><a href="#" class="social-icon">📷</a><a href="#" class="social-icon">🔗</a></div></div>
+            <div class="footer-col"><h4>Quick Links</h4><ul class="footer-links"><li><a href="dashboard.html">Dashboard</a></li><li><a href="complaint-form.html">Submit Complaint</a></li><li><a href="tracking.html">Track Status</a></li><li><a href="alerts.html">Alerts</a></li><li><a href="feedback.html">Feedback</a></li></ul></div>
+            <div class="footer-col"><h4>Support</h4><ul class="footer-links"><li><a href="help-center.html">Help Center</a></li><li><a href="faqs.html">FAQs</a></li><li><a href="help-center.html">Contact Support</a></li><li><a href="privacy-policy.html">Privacy Policy</a></li><li><a href="terms-of-service.html">Terms of Service</a></li></ul></div>
+            <div class="footer-col"><h4>Contact Us</h4><ul class="footer-contact"><li>📞 <a href="tel:+911234567890">+91 12345 67890</a></li><li>📧 <a href="mailto:support@voxify.com">support@voxify.com</a></li><li>🏢 Mumbai, Maharashtra, India</li></ul><div class="footer-badge"><span>24/7 Support</span><span>ISO Certified</span></div></div>
+        </div>
+        <div class="footer-bottom"><p>&copy; 2025 VOXIFY - Complaint Management & Outage Detection System. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Sitemap</a><a href="#">Accessibility</a><a href="#">Cookie Policy</a></div></div>
+    </div>
+</footer>
+
+<script src="../../js/User/feedback.js"></script>
+</body>
+</html>

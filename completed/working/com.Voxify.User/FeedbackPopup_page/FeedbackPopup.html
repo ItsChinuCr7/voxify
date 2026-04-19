@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="ISO-8859-1">
+<title>Insert title here</title>
+</head>
+<body>
+<!-- Feedback Popup -->
+<div id="feedbackOverlay" class="feedback-overlay">
+  <div class="feedback-popup">
+    
+    <h3>We Value Your Feedback</h3>
+    <p class="complaint-id">Complaint ID: <strong>#CMP-10245</strong></p>
+
+    <!-- Star Rating -->
+    <div class="rating-section">
+      <p>Rate your experience</p>
+      <div class="stars">
+        <span onclick="setRating(1)">★</span>
+        <span onclick="setRating(2)">★</span>
+        <span onclick="setRating(3)">★</span>
+        <span onclick="setRating(4)">★</span>
+        <span onclick="setRating(5)">★</span>
+      </div>
+    </div>
+
+    <!-- Experience Checkbox -->
+    <div class="experience-section">
+      <p>How was your experience?</p>
+      <label><input type="checkbox"> Quick Resolution</label>
+      <label><input type="checkbox"> Clear Communication</label>
+      <label><input type="checkbox"> Supportive Staff</label>
+      <label><input type="checkbox"> Delayed Resolution</label>
+    </div>
+
+    <!-- Additional Comments -->
+    <textarea placeholder="Additional comments (optional)"></textarea>
+
+    <!-- Actions -->
+    <div class="feedback-actions">
+      <button onclick="submitFeedback()">Submit Feedback</button>
+      <button class="secondary" onclick="closeFeedback()">Close</button>
+    </div>
+
+  </div>
+</div>
+
+</body>
+</html>

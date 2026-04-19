@@ -1,0 +1,403 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>VOXIFY | Terms of Service</title>
+    <link rel="stylesheet" href="../../css/terms-of-service.css">
+    <link rel="stylesheet" href="../../css/common.css">
+	 <link rel="stylesheet" href="../../css/User/tracking.css">
+	 <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/design-tokens.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <link rel="stylesheet" href="../../css/cards.css">
+    <link rel="stylesheet" href="../../css/buttons.css">
+    <link rel="stylesheet" href="../../css/typography.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="voxify-navbar">
+    <div class="navbar-left">
+        <button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="navbar-logo">VOX<span>IFY</span></div>
+    </div>
+
+    <div class="navbar-search">
+        <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input type="text" id="searchInput" placeholder="Search tickets, customers, complaints...">
+    </div>
+
+    <div class="navbar-right">
+        <button class="nav-icon-btn" id="notifIconBtn" title="Notifications">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+            </svg>
+            <span class="nav-badge" id="globalUnreadBadge">8</span>
+        </button>
+
+        <div class="status-quick-view">
+            <button class="status-quick-btn" id="statusQuickBtn">
+                <span class="status-dot"></span>
+                <span>Status</span>
+                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="6 9 12 15 18 9"/>
+                </svg>
+            </button>
+            <div class="status-dropdown" id="statusDropdown">
+                <h4>Ticket Status</h4>
+                <div class="status-row"><span>Open Tickets</span><span class="status active" id="dropdownOpen">0</span></div>
+                <div class="status-row"><span>In Progress</span><span class="status pending" id="dropdownProgress">0</span></div>
+                <div class="status-row"><span>Resolved Today</span><span class="status resolved" id="dropdownResolved">0</span></div>
+            </div>
+        </div>
+
+        <div class="navbar-profile">
+            <button class="profile-btn" id="profileBtn">
+                <div class="profile-avatar">RS</div>
+                <span class="profile-name">Rahul Sharma</span>
+                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="6 9 12 15 18 9"/>
+                </svg>
+            </button>
+            <div class="profile-dropdown" id="profileDropdown">
+                <a href="#"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>My Profile</a>
+                <a href="settings.html"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>Settings</a>
+                <hr>
+                <a href="../Authentication/login.html" class="logout"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>Logout</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- ================= SIDEBAR ================= -->
+<aside class="voxify-sidebar" id="voxifySidebar">
+    <div class="sidebar-user-info">
+        <div class="sidebar-avatar">RS</div>
+        <div class="sidebar-user-details">
+            <p>Rahul Sharma</p>
+            <p>Senior Support Agent</p>
+        </div>
+    </div>
+    <nav class="sidebar-nav">
+        <div class="sidebar-section-label">Main Menu</div>
+        <a href="support-dashboard.html" class="active">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+            Dashboard
+        </a>
+        <a href="ticket-operations.html">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            Ticket Queue
+            <span class="nav-badge-dot">12</span>
+        </a>
+        <a href="ticket-history.html">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Ticket History
+        </a>
+        <div class="sidebar-section-label">Operations</div>
+        <a href="assign-technician.html">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Assign Technician
+        </a>
+        <a href="live-monitoring.html">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Live Monitoring
+        </a>
+        <a href="outage-alerts.html">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            Outage Alerts
+        </a>
+        <div class="sidebar-section-label">Customer</div>
+        <a href="agent-log-complaint.html">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            Log Complaint
+        </a>
+        <div class="sidebar-section-label">Account</div>
+        <a href="settings.html">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            Settings
+        </a>
+    </nav>
+</aside>
+	
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- ================= MAIN LAYOUT ================= -->
+<div class="voxify-layout" id="voxifyLayout">
+    <div class="terms-page">
+        
+        <!-- Hero Section -->
+        <div class="terms-hero">
+            <div class="hero-icon">📜</div>
+            <h1>Terms of Service</h1>
+            <p>Last updated: April 15, 2025</p>
+            <div class="hero-badge">
+                <span>✅ Governs all VOXIFY services</span>
+                <span>⚖️ Legally binding agreement</span>
+                <span>🔄 Subject to change with notice</span>
+            </div>
+        </div>
+
+        <!-- Quick Navigation -->
+        <div class="quick-nav">
+            <a href="#acceptance" class="quick-nav-link">Acceptance</a>
+            <a href="#services" class="quick-nav-link">Services</a>
+            <a href="#user-obligations" class="quick-nav-link">User Obligations</a>
+            <a href="#complaints" class="quick-nav-link">Complaints</a>
+            <a href="#account" class="quick-nav-link">Account</a>
+            <a href="#limitations" class="quick-nav-link">Limitations</a>
+            <a href="#termination" class="quick-nav-link">Termination</a>
+            <a href="#contact" class="quick-nav-link">Contact</a>
+        </div>
+
+        <!-- Terms Content -->
+        <div class="terms-content">
+            
+            <!-- Section 1: Acceptance of Terms -->
+            <div class="terms-section" id="acceptance">
+                <div class="section-header">
+                    <div class="section-icon">✓</div>
+                    <h2>1. Acceptance of Terms</h2>
+                </div>
+                <div class="section-content">
+                    <p>By accessing or using the VOXIFY platform ("VOXIFY", "we", "us", "our"), including any of our websites, mobile applications, or services, you agree to be bound by these Terms of Service ("Terms"). If you do not agree to these Terms, please do not use our services.</p>
+                    <p>These Terms constitute a legally binding agreement between you and VOXIFY regarding your use of the platform. By creating an account, submitting a complaint, or otherwise using our services, you acknowledge that you have read, understood, and agree to be bound by these Terms.</p>
+                </div>
+            </div>
+
+            <!-- Section 2: Description of Services -->
+            <div class="terms-section" id="services">
+                <div class="section-header">
+                    <div class="section-icon">🔧</div>
+                    <h2>2. Description of Services</h2>
+                </div>
+                <div class="section-content">
+                    <p>VOXIFY provides a comprehensive complaint management and outage detection system that includes but is not limited to:</p>
+                    <ul>
+                        <li><strong>Complaint Submission:</strong> Registering, categorizing, and tracking customer complaints</li>
+                        <li><strong>Outage Detection:</strong> Identifying and alerting users about service disruptions</li>
+                        <li><strong>Ticket Management:</strong> Assigning, escalating, and resolving support tickets</li>
+                        <li><strong>Notification Services:</strong> Sending real-time alerts via email, SMS, and push notifications</li>
+                        <li><strong>Feedback Collection:</strong> Gathering user ratings and suggestions for service improvement</li>
+                        <li><strong>Analytics Dashboard:</strong> Providing insights into complaint trends and resolution metrics</li>
+                    </ul>
+                    <p>We reserve the right to modify, suspend, or discontinue any aspect of our services at any time, with or without notice.</p>
+                </div>
+            </div>
+
+            <!-- Section 3: User Obligations -->
+            <div class="terms-section" id="user-obligations">
+                <div class="section-header">
+                    <div class="section-icon">👤</div>
+                    <h2>3. User Obligations</h2>
+                </div>
+                <div class="section-content">
+                    <p>As a user of VOXIFY, you agree to:</p>
+                    <ul>
+                        <li>Provide accurate, current, and complete information when registering or submitting complaints</li>
+                        <li>Maintain the security of your account credentials and notify us immediately of any unauthorized access</li>
+                        <li>Use the platform only for lawful purposes and in compliance with applicable laws and regulations</li>
+                        <li>Not submit false, misleading, or fraudulent complaints</li>
+                        <li>Not interfere with or disrupt the operation of our services</li>
+                        <li>Not attempt to gain unauthorized access to any portion of the platform</li>
+                        <li>Not use any automated means to access or collect data from our services</li>
+                        <li>Respect the privacy and rights of other users and service providers</li>
+                    </ul>
+                    <p>Violation of these obligations may result in immediate termination of your account and legal action where applicable.</p>
+                </div>
+            </div>
+
+            <!-- Section 4: Complaint Submission Guidelines -->
+            <div class="terms-section" id="complaints">
+                <div class="section-header">
+                    <div class="section-icon">📝</div>
+                    <h2>4. Complaint Submission Guidelines</h2>
+                </div>
+                <div class="section-content">
+                    <p>When submitting a complaint through VOXIFY, you acknowledge and agree that:</p>
+                    <ul>
+                        <li>All complaints must be submitted in good faith and contain accurate information</li>
+                        <li>You are solely responsible for the content of your complaints</li>
+                        <li>We may share complaint details with relevant authorities or service providers for resolution</li>
+                        <li>We reserve the right to reject, categorize, or prioritize complaints at our discretion</li>
+                        <li>Complaint resolution timelines are estimates and may vary based on complexity and external factors</li>
+                        <li>We are not liable for delays caused by third-party service providers or government agencies</li>
+                        <li>You may be required to provide additional information or documentation to process your complaint</li>
+                        <li>False or malicious complaints may result in account suspension or legal action</li>
+                    </ul>
+                </div>
+            </div>
+
+            <!-- Section 5: Account Registration and Security -->
+            <div class="terms-section" id="account">
+                <div class="section-header">
+                    <div class="section-icon">🔐</div>
+                    <h2>5. Account Registration and Security</h2>
+                </div>
+                <div class="section-content">
+                    <p>To access certain features of VOXIFY, you must register for an account. You agree to:</p>
+                    <ul>
+                        <li>Provide true, accurate, and complete registration information</li>
+                        <li>Maintain and promptly update your information to keep it current</li>
+                        <li>Keep your password confidential and not share it with any third party</li>
+                        <li>Accept responsibility for all activities that occur under your account</li>
+                        <li>Notify us immediately of any security breach or unauthorized use</li>
+                    </ul>
+                    <p>We reserve the right to suspend or terminate accounts that violate these Terms or remain inactive for extended periods. You may delete your account at any time through the Settings page.</p>
+                </div>
+            </div>
+
+            <!-- Section 6: Intellectual Property -->
+            <div class="terms-section">
+                <div class="section-header">
+                    <div class="section-icon">©️</div>
+                    <h2>6. Intellectual Property</h2>
+                </div>
+                <div class="section-content">
+                    <p>All content, features, and functionality of the VOXIFY platform, including but not limited to text, graphics, logos, icons, images, audio clips, video clips, data compilations, and software, are the exclusive property of VOXIFY or its licensors and are protected by Indian and international copyright, trademark, patent, trade secret, and other intellectual property laws.</p>
+                    <p>You may not reproduce, distribute, modify, create derivative works of, publicly display, or commercially exploit any part of our platform without our express written consent. You retain ownership of any content you submit, but grant us a non-exclusive, worldwide, royalty-free license to use, store, and display your content for the purpose of providing our services.</p>
+                </div>
+            </div>
+            
+<!-- Section 7: Privacy and Data Protection -->
+            <div class="terms-section">
+                <div class="section-header">
+                    <div class="section-icon">🔒</div>
+                    <h2>7. Privacy and Data Protection</h2>
+                </div>
+                <div class="section-content">
+                    <p>Your privacy is important to us. Our collection, use, and disclosure of personal information is governed by our <a href="privacy-policy.html">Privacy Policy</a>, which is incorporated into these Terms by reference. By using VOXIFY, you consent to the collection and use of your information as described in the Privacy Policy.</p>
+                    <p>We implement industry-standard security measures to protect your data, including encryption, access controls, and regular security audits. However, no method of transmission over the internet is 100% secure, and we cannot guarantee absolute security.</p>
+                </div>
+            </div>
+
+            <!-- Section 8: Limitation of Liability -->
+            <div class="terms-section" id="limitations">
+                <div class="section-header">
+                    <div class="section-icon">⚠️</div>
+                    <h2>8. Limitation of Liability</h2>
+                </div>
+                <div class="section-content">
+                    <p>To the maximum extent permitted by law, VOXIFY and its officers, directors, employees, agents, and affiliates shall not be liable for any indirect, incidental, special, consequential, or punitive damages, including without limitation, loss of profits, data, use, goodwill, or other intangible losses, resulting from:</p>
+                    <ul>
+                        <li>Your use or inability to use our services</li>
+                        <li>Any conduct or content of any third party on our platform</li>
+                        <li>Any content obtained from our services</li>
+                        <li>Unauthorized access, use, or alteration of your transmissions or content</li>
+                        <li>Delays or failures in complaint resolution caused by third parties</li>
+                    </ul>
+                    <p>Our total liability to you for any claims arising out of or relating to these Terms or your use of our services shall not exceed the amount paid by you, if any, for accessing our services during the twelve (12) months preceding the event giving rise to the liability.</p>
+                </div>
+            </div>
+
+            <!-- Section 9: Disclaimer of Warranties -->
+            <div class="terms-section">
+                <div class="section-header">
+                    <div class="section-icon">📢</div>
+                    <h2>9. Disclaimer of Warranties</h2>
+                </div>
+                <div class="section-content">
+                    <p>YOUR USE OF VOXIFY IS AT YOUR SOLE RISK. OUR SERVICES ARE PROVIDED ON AN "AS IS" AND "AS AVAILABLE" BASIS. WE EXPRESSLY DISCLAIM ALL WARRANTIES OF ANY KIND, WHETHER EXPRESS, IMPLIED, OR STATUTORY, INCLUDING BUT NOT LIMITED TO:</p>
+                    <ul>
+                        <li>IMPLIED WARRANTIES OF MERCHANTABILITY, FITNESS FOR A PARTICULAR PURPOSE, AND NON-INFRINGEMENT</li>
+                        <li>WARRANTIES THAT OUR SERVICES WILL BE UNINTERRUPTED, TIMELY, SECURE, OR ERROR-FREE</li>
+                        <li>WARRANTIES THAT COMPLAINTS WILL BE RESOLVED WITHIN ANY SPECIFIC TIMEFRAME</li>
+                        <li>WARRANTIES REGARDING THE ACCURACY OR RELIABILITY OF ANY INFORMATION PROVIDED</li>
+                    </ul>
+                    <p>We do not warrant that any defects in our services will be corrected or that our servers are free of viruses or other harmful components.</p>
+                </div>
+            </div>
+
+            <!-- Section 10: Termination -->
+            <div class="terms-section" id="termination">
+                <div class="section-header">
+                    <div class="section-icon">⛔</div>
+                    <h2>10. Termination</h2>
+                </div>
+                <div class="section-content">
+                    <p>We may terminate or suspend your account and access to our services immediately, without prior notice or liability, for any reason whatsoever, including without limitation if you breach these Terms. Upon termination, your right to use our services will cease immediately. If you wish to terminate your account, you may simply discontinue using our services or delete your account through the Settings page.</p>
+                    <p>Provisions that by their nature should survive termination shall survive termination, including ownership provisions, warranty disclaimers, indemnity, and limitations of liability.</p>
+                </div>
+            </div>
+
+            <!-- Section 11: Governing Law -->
+            <div class="terms-section">
+                <div class="section-header">
+                    <div class="section-icon">⚖️</div>
+                    <h2>11. Governing Law</h2>
+                </div>
+                <div class="section-content">
+                    <p>These Terms shall be governed and construed in accordance with the laws of India, without regard to its conflict of law provisions. Any dispute arising under or in connection with these Terms shall be subject to the exclusive jurisdiction of the courts located in Mumbai, Maharashtra, India.</p>
+                    <p>We make no representation that our services are appropriate or available for use in other locations. If you access our services from outside India, you do so on your own initiative and are responsible for compliance with local laws.</p>
+                </div>
+            </div>
+
+            <!-- Section 12: Changes to Terms -->
+            <div class="terms-section">
+                <div class="section-header">
+                    <div class="section-icon">🔄</div>
+                    <h2>12. Changes to Terms</h2>
+                </div>
+                <div class="section-content">
+                    <p>We reserve the right to modify or replace these Terms at any time. If a revision is material, we will provide at least 30 days' notice prior to any new terms taking effect. What constitutes a material change will be determined at our sole discretion.</p>
+                    <p>By continuing to access or use our services after any revisions become effective, you agree to be bound by the revised terms. If you do not agree to the new terms, you are no longer authorized to use our services.</p>
+                </div>
+            </div>
+
+            <!-- Section 13: Contact Information -->
+            <div class="terms-section" id="contact">
+                <div class="section-header">
+                    <div class="section-icon">📧</div>
+                    <h2>13. Contact Information</h2>
+                </div>
+                <div class="section-content">
+                    <p>If you have any questions about these Terms, please contact us at:</p>
+                    <div class="contact-info-box">
+                        <p><strong>VOXIFY Support Team</strong></p>
+                        <p>📧 Email: <a href="mailto:legal@voxify.com">legal@voxify.com</a></p>
+                        <p>📞 Phone: <a href="tel:+911234567890">+91 12345 67890</a></p>
+                        <p>🏢 Address: VOXIFY Headquarters, Mumbai, Maharashtra, India - 400001</p>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <!-- Acceptance Footer -->
+        <div class="acceptance-footer">
+            <div class="acceptance-buttons">
+                <button class="btn secondary-btn" id="printTermsBtn">🖨️ Print / Download PDF</button>
+                <button class="btn primary-btn" id="acceptTermsBtn">✓ I Accept the Terms of Service</button>
+            </div>
+            <p class="acceptance-note">By clicking "I Accept", you acknowledge that you have read, understood, and agree to be bound by these Terms of Service.</p>
+        </div>
+
+    </div>
+</div>
+
+<!-- ================= FOOTER ================= -->
+<footer class="voxify-footer">
+    <div class="footer-container">
+        <div class="footer-grid">
+            <div class="footer-col"><div class="footer-logo">VOX<span>IFY</span></div><p class="footer-about">Empowering citizens with efficient complaint management and real-time outage detection system.</p><div class="footer-social"><a href="#" class="social-icon">📘</a><a href="#" class="social-icon">🐦</a><a href="#" class="social-icon">📷</a><a href="#" class="social-icon">🔗</a></div></div>
+            <div class="footer-col"><h4>Quick Links</h4><ul class="footer-links"><li><a href="dashboard.html">Dashboard</a></li><li><a href="complaint-form.html">Submit Complaint</a></li><li><a href="tracking.html">Track Status</a></li><li><a href="alerts.html">Alerts</a></li><li><a href="feedback.html">Feedback</a></li></ul></div>
+            <div class="footer-col"><h4>Support</h4><ul class="footer-links"><li><a href="help-center.html">Help Center</a></li><li><a href="faqs.html">FAQs</a></li><li><a href="help-center.html">Contact Support</a></li><li><a href="privacy-policy.html">Privacy Policy</a></li><li><a href="terms-of-service.html">Terms of Service</a></li></ul></div>
+            <div class="footer-col"><h4>Contact Us</h4><ul class="footer-contact"><li>📞 <a href="tel:+911234567890">+91 12345 67890</a></li><li>📧 <a href="mailto:support@voxify.com">support@voxify.com</a></li><li>🏢 Mumbai, Maharashtra, India</li></ul><div class="footer-badge"><span>24/7 Support</span><span>ISO Certified</span></div></div>
+        </div>
+        <div class="footer-bottom"><p>&copy; 2025 VOXIFY - Complaint Management & Outage Detection System. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Sitemap</a><a href="#">Accessibility</a><a href="#">Cookie Policy</a></div></div>
+    </div>
+</footer>
+
+
+<div class="toast" id="toast"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span id="toastMsg"></span></div>
+
+<script src="../js/terms-of-service.js"></script>
+</body>
+</html>

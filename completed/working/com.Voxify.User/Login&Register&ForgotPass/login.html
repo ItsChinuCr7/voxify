@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Voxify | Login</title>
+    <link rel="stylesheet" href="login.css">
+</head>
+<body>
+
+<div class="main-wrapper">
+    <div class="auth-card">
+
+        <!-- LEFT SECTION -->
+        <div class="left-info">
+            <h1>Voxify</h1>
+            <p>
+                A unified platform for complaint management & outage reporting.
+                Fast, reliable, and built for enterprise performance.
+            </p>
+
+            <ul>
+                <li>⚡ Real‑time Alerts</li>
+                <li>📞 Smart Complaint Tracking</li>
+                <li>📊 Status & Severity Insights</li>
+                <li>🔔 Automated Customer Updates</li>
+            </ul>
+
+            <div class="badges">
+                <span>Secure</span>
+                <span>Reliable</span>
+                <span>Enterprise‑Ready</span>
+            </div>
+        </div>
+
+        <!-- RIGHT FORM -->
+        <div class="right-form">
+            <h2>Login</h2>
+            <p class="subtitle">Welcome back to Voxify</p>
+
+            <form id="loginForm" novalidate>
+
+                <div class="field">
+                    <label>Email</label>
+                    <input type="text" id="loginID">
+                    <small class="error" id="loginError"></small>
+                </div>
+
+                <div class="field password-field">
+                    <label>Password</label>
+                    <input type="password" id="loginPassword">
+                    <small class="error" id="passwordError"></small>
+
+                    <a href="forgot.html" class="forgot-link">
+                        Forgot Password?
+                    </a>
+                </div>
+
+                <button type="submit" id="loginBtn" disabled onclick="login()">Login</button>
+
+                <p class="register-link">
+                    Already have an account?
+                    <a href="register.html">Register Here</a>
+                </p>
+
+            </form>
+        </div>
+    </div>
+</div>
+
+<script src="login.js"></script>
+</body>
+</html>

@@ -1,0 +1,139 @@
+/* =========================================================
+   VOXIFY RESPONSIVE SYSTEM
+   Purpose:
+   - Mobile-first behavior
+   - Tablet optimizations
+   - Consistent UX across all pages
+========================================================= */
+
+/* =========================================================
+   BREAKPOINT GUIDE
+   Mobile:   <= 600px
+   Tablet:  <= 768px
+   Laptop:  <= 1024px
+========================================================= */
+
+/* ===================== TABLET ===================== */
+@media (max-width: 1024px) {
+
+  /* Reduce horizontal padding */
+  .dashboard-container,
+  .complaint-page {
+    padding: 20px;
+  }
+
+  /* Grid reductions */
+  .stats-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .actions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .two-column {
+    grid-template-columns: 1fr;
+  }
+}
+
+/* ===================== MOBILE ===================== */
+@media (max-width: 768px) {
+
+  /* ----------- SIDEBAR ----------- */
+  .voxify-sidebar {
+    transform: translateX(-100%);
+    position: fixed;
+    z-index: 1200;
+  }
+
+  .voxify-sidebar.mobile-open {
+    transform: translateX(0);
+  }
+
+  .sidebar-overlay {
+    display: block;
+  }
+
+  /* Layout should NOT reserve sidebar space */
+  .voxify-layout {
+    margin-left: 0;
+  }
+
+  /* ----------- NAVBAR ----------- */
+  .navbar-search {
+    width: 140px;
+  }
+
+  .profile-name {
+    display: none;
+  }
+
+  .navbar-logo {
+    font-size: 18px;
+  }
+
+  /* ----------- GRIDS ----------- */
+  .stats-grid,
+  .actions-grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* ----------- BUTTONS ----------- */
+  .btn {
+    width: 100%;
+  }
+
+  .form-actions {
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  /* ----------- FORMS ----------- */
+  .form-row {
+    grid-template-columns: 1fr;
+    gap: 16px;
+  }
+
+  .form-group.full-width {
+    grid-column: span 1;
+  }
+}
+
+/* ===================== SMALL MOBILE ===================== */
+@media (max-width: 480px) {
+
+  /* Typography scaling */
+  h1 {
+    font-size: 22px;
+  }
+
+  h2 {
+    font-size: 18px;
+  }
+
+  p {
+    font-size: 13px;
+  }
+
+  /* Reduce card padding */
+  .card-body {
+    padding: 16px;
+  }
+
+  /* Navbar spacing */
+  .navbar-right {
+    gap: 6px;
+  }
+
+  .nav-icon-btn {
+    padding: 6px;
+  }
+
+  /* Toast alignment */
+  .toast {
+    left: 16px;
+    right: 16px;
+    bottom: 20px;
+    width: auto;
+  }
+}

@@ -1,0 +1,1222 @@
+/* =========================================================
+   VOXIFY LANDING PAGE – FINAL CSS
+   Hero section preserved exactly (layout & spacing)
+   ========================================================= */
+
+/* -------------------- ROOT TOKENS -------------------- */
+
+:root {
+  --voxify-blue-primary: #1F4FD8;
+  --voxify-blue-dark: #0B1F44;
+  --voxify-blue-light: #E8F0FF;
+
+  --voxify-bg-main: #F4F6F9;
+  --voxify-white: #FFFFFF;
+
+  --voxify-text-primary: #1A1A1A;
+  --voxify-text-secondary: #5F6368;
+  --voxify-text-muted: #9AA0A6;
+  --voxify-text-light: #DDE6FF;
+}
+
+/* -------------------- RESET -------------------- */
+
+*,
+*::before,
+*::after {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+  background-color: var(--voxify-bg-main);
+  color: var(--voxify-text-primary);
+  line-height: 1.6;
+}
+
+/* -------------------- COMMON -------------------- */
+
+section {
+  padding: 96px 24px;
+}
+
+.voxify-section-header {
+  max-width: 760px;
+  margin: 0 auto 64px;
+  text-align: center;
+}
+
+.voxify-section-header h2 {
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.voxify-section-header p {
+  font-size: 16px;
+  color: var(--voxify-text-secondary);
+}
+
+/* -------------------- BUTTONS -------------------- */
+
+.voxify-btn-primary,
+.voxify-btn-secondary {
+  padding: 14px 26px;
+  font-size: 15px;
+  font-weight: 600;
+  border-radius: 6px;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.voxify-btn-primary {
+  background-color: var(--voxify-blue-primary);
+  color: var(--voxify-white);
+}
+
+.voxify-btn-primary:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.2);
+}
+
+.voxify-btn-secondary {
+  background-color: #E0E3EB;
+  color: var(--voxify-blue-dark);
+}
+
+.voxify-btn-secondary:hover {
+  transform: translateY(-2px);
+}
+
+/* =========================================================
+   HERO SECTION (UNCHANGED STRUCTURE & SPACING)
+   ========================================================= */
+
+.voxify-hero-section {
+  background: linear-gradient(
+    135deg,
+    var(--voxify-blue-dark),
+    var(--voxify-blue-primary)
+  );
+  padding: 100px 24px;
+  color: var(--voxify-white);
+}
+
+.voxify-hero-container {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 64px;
+  align-items: center;
+}
+
+.voxify-hero-badge {
+  display: inline-block;
+  background-color: var(--voxify-blue-light);
+  color: var(--voxify-blue-primary);
+  padding: 8px 16px;
+  font-size: 14px;
+  font-weight: 600;
+  border-radius: 18px;
+  margin-bottom: 20px;
+}
+
+.voxify-hero-title {
+  font-size: 44px;
+  font-weight: 700;
+  line-height: 1.2;
+  margin-bottom: 22px;
+}
+
+.voxify-hero-title span {
+  display: block;
+  color: #FFFFFF;
+}
+
+.voxify-hero-description {
+  font-size: 17px;
+  color: #E6ECFF;
+  max-width: 520px;
+  margin-bottom: 36px;
+}
+
+.voxify-hero-actions {
+  display: flex;
+  gap: 16px;
+  margin-bottom: 30px;
+}
+
+/* =====================================================
+   HERO IMAGE FIX (RESPONSIVE + COOL)
+   ===================================================== */
+
+.voxify-hero-visual {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+/* Actual hero image */
+.voxify-hero-image {
+  width: 100%;
+  max-width: 520px;
+  height: auto;
+
+  object-fit: contain;
+  border-radius: 20px;
+
+  /* Hero-style depth */
+  box-shadow:
+    0 32px 90px rgba(31, 79, 216, 0.45),
+    0 0 0 1px rgba(255, 255, 255, 0.08);
+
+  transition: transform 0.35s ease, box-shadow 0.35s ease;
+}
+
+/* Feel-good hover (desktop only effect) */
+.voxify-hero-image:hover {
+  transform: translateY(-8px) scale(1.02);
+  box-shadow:
+    0 42px 120px rgba(31, 79, 216, 0.6);
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .voxify-hero-image {
+    max-width: 460px;
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .voxify-hero-image {
+    max-width: 100%;
+    margin-top: 48px;
+  }
+}
+
+/* =====================================================
+   TRUST SECTION – PILLAR STYLE (PREMIUM)
+   ===================================================== */
+
+.voxify-trust-section {
+  background-color: #F4F6F9;
+  padding: 100px 24px;
+}
+
+.voxify-trust-container {
+  max-width: 1100px;
+  margin: 0 auto;
+}
+
+/* Pillar grid */
+.voxify-trust-pillars {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 40px;
+}
+
+/* Pillar */
+.voxify-trust-pillar {
+  position: relative;
+  background: #FFFFFF;
+  border-radius: 18px;
+  padding: 56px 40px 40px;
+
+  /* subtle outline instead of heavy color */
+  border: 1.5px solid #E2E6EF;
+
+  box-shadow:
+    0 10px 28px rgba(0, 0, 0, 0.08);
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.voxify-trust-pillar:hover {
+  transform: translateY(-8px);
+  box-shadow:
+    0 22px 48px rgba(0, 0, 0, 0.14);
+}
+
+/* Floating badge */
+.voxify-trust-badge {
+  position: absolute;
+  top: -22px;
+  left: 40px;
+
+  width: 48px;
+  height: 48px;
+  border-radius: 14px;
+
+  background: linear-gradient(
+    135deg,
+    #E8F0FF,
+    #FFFFFF
+  );
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 22px;
+  box-shadow:
+    0 6px 16px rgba(31, 79, 216, 0.25);
+}
+
+/* Text */
+.voxify-trust-pillar h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  color: #0B1F44;
+}
+
+.voxify-trust-pillar p {
+  font-size: 15px;
+  line-height: 1.65;
+  color: #5F6368;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .voxify-trust-pillars {
+    grid-template-columns: 1fr;
+  }
+
+  .voxify-trust-badge {
+    left: 32px;
+  }
+}
+
+.voxify-hero-visual {
+  display: flex;
+  justify-content: center;
+}
+
+.voxify-image-placeholder {
+  width: 100%;
+  height: 380px;
+  background-color: var(--voxify-white);
+  border-radius: 12px;
+  color: var(--voxify-text-muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-weight: 600;
+  box-shadow: 0 24px 48px rgba(0, 0, 0, 0.25);
+}
+
+/* /* =========================
+   CLEAN ENTERPRISE FEATURES
+   ========================= */
+
+.voxify-features-grid {
+  max-width: 1200px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 32px;
+}
+
+.voxify-feature-card {
+  background-color: var(--voxify-white);
+  padding: 36px;
+  border-radius: 12px;
+  height: 100%;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.voxify-feature-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, 0.12);
+}
+
+.voxify-feature-icon {
+  font-size: 30px;
+  margin-bottom: 16px;
+}
+
+.voxify-feature-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 10px;
+  color: var(--voxify-text-primary);
+}
+
+.voxify-feature-card p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--voxify-text-secondary);
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .voxify-features-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .voxify-features-grid {
+    grid-template-columns: 1fr;
+  }
+}
+/* =====================================================
+   WHO USES VOXIFY – STRONG VISUAL DESIGN
+   ===================================================== */
+
+.voxify-users-section {
+  background: #F4F6F9;
+  padding: 100px 24px;
+}
+
+.voxify-users-container {
+  max-width: 1200px;
+  margin: 0 auto;
+}
+
+/* Grid */
+.voxify-users-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 32px;
+}
+
+/* Cards */
+.voxify-user-card {
+  border-radius: 20px;
+  padding: 40px;
+  color: #0B1F44;
+  position: relative;
+
+  box-shadow:
+    0 12px 30px rgba(0,0,0,0.12);
+
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.voxify-user-card:hover {
+  transform: translateY(-10px);
+  box-shadow:
+    0 22px 50px rgba(0,0,0,0.2);
+}
+
+/* Large icon */
+.voxify-user-icon {
+  width: 64px;
+  height: 64px;
+  border-radius: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  font-size: 32px;
+  margin-bottom: 22px;
+  background: rgba(255,255,255,0.7);
+}
+
+/* Text */
+.voxify-user-card h3 {
+  font-size: 18px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.voxify-user-card p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: rgba(11, 31, 68, 0.85);
+}
+
+/* ===== Card Themes (FULL BACKGROUNDS) ===== */
+
+.voxify-user-card.gov {
+  background: linear-gradient(
+    135deg,
+   
+#F1ECFB,
+    #FFFFFF
+
+  );
+}
+
+.voxify-user-card.utility {
+  background: linear-gradient(
+    135deg,
+    
+#F1ECFB,
+    #FFFFFF
+
+  );
+}
+
+.voxify-user-card.telecom {
+  background: linear-gradient(
+    135deg,
+    
+#F1ECFB,
+    #FFFFFF
+
+  );
+}
+
+.voxify-user-card.enterprise {
+  background: linear-gradient(
+    135deg,
+    #F1ECFB,
+    #FFFFFF
+  );
+}
+
+/* Responsive */
+@media (max-width: 1000px) {
+  .voxify-users-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 520px) {
+  .voxify-users-grid {
+    grid-template-columns: 1fr;
+  }
+}
+ /*   TESTIMONIALS (UNCHANGED STYLE)
+   ========================================================= */ */
+
+.voxify-testimonials-section {
+  background-color: var(--voxify-bg-main);
+}
+
+.voxify-testimonials-grid {
+  max-width: 1000px;
+  margin: auto;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+}
+
+.voxify-testimonial-card {
+  background-color: var(--voxify-white);
+  padding: 32px;
+  border-radius: 16px;
+  border-left: 6px solid var(--voxify-blue-primary);
+  transition: transform 0.25s ease;
+}
+
+.voxify-testimonial-card:hover {
+  transform: translateY(-6px);
+}
+
+/* =====================================================
+   FAQ SECTION – CLEAN, ENTERPRISE STYLE
+   ===================================================== */
+
+.voxify-faq-section {
+  background-color: var(--voxify-white);
+  padding: 96px 24px;
+}
+
+.voxify-faq-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.voxify-faq-header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 56px;
+}
+
+.voxify-faq-header h2 {
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 12px;
+}
+
+.voxify-faq-header p {
+  font-size: 16px;
+  color: var(--voxify-text-secondary);
+  line-height: 1.6;
+}
+
+/* FAQ List */
+/* =====================================================
+   FAQ SECTION – GRAY / NEUTRAL THEME
+   ===================================================== */
+
+.voxify-faq-section {
+  background-color: #F4F6F9; /* soft gray background */
+  padding: 96px 24px;
+}
+
+.voxify-faq-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+.voxify-faq-header {
+  text-align: center;
+  max-width: 760px;
+  margin: 0 auto 56px;
+}
+
+.voxify-faq-header h2 {
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 12px;
+  color: #1A1A1A;
+}
+
+.voxify-faq-header p {
+  font-size: 16px;
+  color: #5F6368;
+  line-height: 1.6;
+}
+
+/* FAQ List */
+.voxify-faq-list {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+/* Individual FAQ Item */
+.voxify-faq-item {
+  background-color: #FFFFFF;
+  border-radius: 14px;
+  box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+  overflow: hidden;
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.voxify-faq-item:hover {
+  box-shadow: 0 10px 26px rgba(0, 0, 0, 0.12);
+  transform: translateY(-2px);
+}
+
+/* Question */
+.voxify-faq-item summary {
+  padding: 22px 26px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  list-style: none;
+  color: #1A1A1A;
+}
+
+.voxify-faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+/* Chevron Icon (neutral gray) */
+.voxify-faq-icon {
+  width: 10px;
+  height: 10px;
+  border-right: 2px solid #5F6368;
+  border-bottom: 2px solid #5F6368;
+  transform: rotate(45deg);
+  transition: transform 0.25s ease;
+}
+
+/* Open State */
+.voxify-faq-item[open] .voxify-faq-icon {
+  transform: rotate(-135deg);
+}
+
+/* Answer */
+.voxify-faq-item p {
+  padding: 0 26px 22px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #5F6368;
+}
+
+/* Responsive */
+@media (max-width: 600px) {
+  .voxify-faq-item summary {
+    font-size: 15px;
+  }
+}
+/* =====================================================
+   PROOF / TRUST SECTION
+   ===================================================== */
+
+.voxify-trust-section {
+  background-color: var(--voxify-blue-light);
+  padding: 96px 24px;
+}
+
+.voxify-trust-container {
+  max-width: 1100px;
+  margin: 0 auto;
+  text-align: center;
+}
+
+/* Header */
+.voxify-trust-header {
+  max-width: 780px;
+  margin: 0 auto 64px;
+}
+
+.voxify-trust-header h2 {
+  font-size: 34px;
+  font-weight: 700;
+  margin-bottom: 14px;
+  color: var(--voxify-text-primary);
+}
+
+.voxify-trust-header p {
+  font-size: 16px;
+  color: var(--voxify-text-secondary);
+  line-height: 1.6;
+}
+
+/* Cards */
+.voxify-trust-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  margin-bottom: 48px;
+}
+
+.voxify-trust-card {
+  background-color: var(--voxify-white);
+  padding: 36px 32px;
+  border-radius: 14px;
+  text-align: left;
+
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+  transition: transform 0.25s ease, box-shadow 0.25s ease;
+}
+
+.voxify-trust-card:hover {
+  transform: translateY(-6px);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.12);
+}
+
+.voxify-trust-card h3 {
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--voxify-blue-dark);
+}
+
+.voxify-trust-card p {
+  font-size: 15px;
+  line-height: 1.6;
+  color: var(--voxify-text-secondary);
+}
+
+/* Trust Indicators */
+.voxify-trust-metrics {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: 24px;
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--voxify-blue-dark);
+}
+
+/* ================= RESPONSIVE ================= */
+
+@media (max-width: 900px) {
+  .voxify-trust-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .voxify-trust-card {
+    text-align: center;
+  }
+
+  .voxify-trust-metrics {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+/* =========================================================
+   MOBILE RESPONSIVE FIXES (<= 768px)
+   This block ONLY fixes phone layouts
+   ========================================================= */
+
+@media (max-width: 768px) {
+
+  /* ---------- HERO ---------- */
+
+  .voxify-hero-container {
+    grid-template-columns: 1fr;
+    text-align: center;
+  }
+
+  .voxify-hero-title {
+    font-size: 34px;
+    line-height: 1.25;
+  }
+
+  .voxify-hero-description {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  .voxify-hero-actions {
+    flex-direction: column;
+    align-items: center;
+    gap: 12px;
+  }
+
+  .voxify-btn-primary,
+  .voxify-btn-secondary {
+    width: 100%;
+    max-width: 320px;
+  }
+
+  .voxify-hero-trust {
+    align-items: center;
+  }
+
+  .voxify-hero-visual {
+    margin-top: 48px;
+  }
+
+  .voxify-hero-image {
+    max-width: 100%;
+  }
+
+  /* ---------- TRUST SECTION ---------- */
+
+  .voxify-trust-pillars {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .voxify-trust-pillar {
+    padding: 40px 28px 32px;
+    text-align: center;
+  }
+
+  .voxify-trust-badge {
+    left: 50%;
+    transform: translateX(-50%);
+  }
+
+  /* ---------- FEATURES ---------- */
+
+  .voxify-features-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .voxify-feature-card {
+    text-align: center;
+  }
+
+  /* ---------- WHO USES VOXIFY ---------- */
+
+  .voxify-users-grid {
+    grid-template-columns: 1fr;
+    gap: 24px;
+  }
+
+  .voxify-user-card {
+    text-align: center;
+  }
+
+  .voxify-user-icon {
+    margin-left: auto;
+    margin-right: auto;
+  }
+
+  /* ---------- TESTIMONIALS ---------- */
+
+  .voxify-testimonials-grid {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
+
+  /* ---------- FAQ ---------- */
+
+  .voxify-faq-item summary {
+    font-size: 15px;
+  }
+}
+
+/* =========================================================
+   VERY SMALL PHONES (<= 480px)
+   ========================================================= */
+
+@media (max-width: 480px) {
+
+  section {
+    padding: 72px 16px;
+  }
+
+  .voxify-hero-title {
+    font-size: 30px;
+  }
+
+  .voxify-section-header h2 {
+    font-size: 28px;
+  }
+
+  .voxify-hero-image {
+    border-radius: 14px;
+  }
+}
+
+/* ================= FOOTER STYLES ================= */
+.voxify-footer {
+    background: linear-gradient(135deg, #1a1a2e 0%, #16213e 100%);
+    color: #ffffff;
+    margin-top: 40px;
+    padding-top: 40px;
+    border-top: 3px solid var(--primary-blue);
+    width: 100%;
+    transition: margin-left 0.3s ease;
+}
+
+/* Footer container - responsive to sidebar */
+.footer-container {
+    max-width: calc(100% - 48px);
+    margin: 0 auto;
+    padding: 0 24px;
+    transition: max-width 0.3s ease;
+}
+
+/* When sidebar is collapsed, footer expands */
+.voxify-layout.sidebar-collapsed ~ .voxify-footer .footer-container,
+body:has(.voxify-layout.sidebar-collapsed) .voxify-footer .footer-container {
+    max-width: 1200px;
+}
+
+/* Footer Grid */
+.footer-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 30px;
+    padding-bottom: 30px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Footer Columns */
+.footer-col h4 {
+    font-size: 16px;
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: var(--primary-blue);
+    position: relative;
+    display: inline-block;
+}
+
+.footer-col h4::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 40px;
+    height: 2px;
+    background: var(--primary-blue);
+    border-radius: 2px;
+}
+
+.footer-logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-bottom: 15px;
+}
+
+.footer-logo span {
+    color: white;
+}
+
+.footer-about {
+    font-size: 13px;
+    line-height: 1.6;
+    color: #b0b0b0;
+    margin-bottom: 20px;
+}
+
+/* Social Icons */
+.footer-social {
+    display: flex;
+    gap: 12px;
+}
+
+.social-icon {
+    width: 36px;
+    height: 36px;
+    background: rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    color: white;
+    font-size: 18px;
+    transition: all 0.3s ease;
+}
+
+.social-icon:hover {
+    background: var(--primary-blue);
+    transform: translateY(-3px);
+}
+
+/* Footer Links */
+.footer-links {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-links li {
+    margin-bottom: 10px;
+}
+
+.footer-links a {
+    color: #b0b0b0;
+    text-decoration: none;
+    font-size: 13px;
+    transition: color 0.3s ease;
+}
+
+.footer-links a:hover {
+    color: var(--primary-blue);
+    padding-left: 5px;
+}
+
+/* Contact Info */
+.footer-contact {
+    list-style: none;
+    padding: 0;
+}
+
+.footer-contact li {
+    color: #b0b0b0;
+    font-size: 13px;
+    margin-bottom: 12px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.footer-contact a {
+    color: #b0b0b0;
+    text-decoration: none;
+}
+
+.footer-contact a:hover {
+    color: var(--primary-blue);
+}
+
+/* Badges */
+.footer-badge {
+    display: flex;
+    gap: 10px;
+    margin-top: 20px;
+}
+
+.footer-badge span {
+    background: rgba(31, 79, 216, 0.2);
+    padding: 4px 10px;
+    border-radius: 20px;
+    font-size: 10px;
+    font-weight: 600;
+    color: var(--primary-blue);
+    border: 1px solid rgba(31, 79, 216, 0.3);
+}
+
+/* Footer Bottom Bar */
+.footer-bottom {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px 0;
+    font-size: 12px;
+    color: #888;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.footer-bottom p {
+    margin: 0;
+}
+
+.footer-bottom-links {
+    display: flex;
+    gap: 20px;
+}
+
+.footer-bottom-links a {
+    color: #888;
+    text-decoration: none;
+    transition: color 0.3s;
+}
+
+.footer-bottom-links a:hover {
+    color: var(--primary-blue);
+}
+
+/* ================= RESPONSIVE FOOTER ================= */
+/* Tablet view */
+@media (max-width: 1024px) {
+    .footer-container {
+        max-width: calc(100% - 40px);
+        padding: 0 20px;
+    }
+    
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 30px;
+    }
+}
+
+/* Mobile view - when sidebar is hidden */
+@media (max-width: 768px) {
+    .voxify-footer {
+        margin-left: 0;
+        width: 100%;
+    }
+    
+    .footer-container {
+        max-width: calc(100% - 32px);
+        padding: 0 16px;
+    }
+    
+    .footer-grid {
+        grid-template-columns: repeat(2, 1fr);
+        gap: 25px;
+    }
+}
+
+/* Small mobile view */
+@media (max-width: 600px) {
+    .footer-container {
+        max-width: calc(100% - 24px);
+        padding: 0 12px;
+    }
+    
+    .footer-grid {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 30px;
+    }
+    
+    .footer-col h4::after {
+        left: 50%;
+        transform: translateX(-50%);
+    }
+    
+    .footer-social {
+        justify-content: center;
+    }
+    
+    .footer-contact li {
+        justify-content: center;
+    }
+    
+    .footer-bottom {
+        flex-direction: column;
+        text-align: center;
+    }
+    
+    .footer-bottom-links {
+        justify-content: center;
+    }
+}
+
+/* ================= SIDEBAR COLLAPSE FOOTER ADJUSTMENT ================= */
+/* When sidebar is collapsed on desktop, footer expands to full width */
+.voxify-layout.sidebar-collapsed ~ .voxify-footer,
+body:has(.voxify-layout.sidebar-collapsed) .voxify-footer {
+    margin-left: 0;
+    width: 100%;
+}
+
+.voxify-layout.sidebar-collapsed ~ .voxify-footer .footer-container,
+body:has(.voxify-layout.sidebar-collapsed) .voxify-footer .footer-container {
+    max-width: 1200px;
+}
+
+/* When sidebar is open on desktop, footer aligns with main content */
+@media (min-width: 769px) {
+    .voxify-footer {
+        margin-left: var(--sidebar-width);
+        width: calc(100% - var(--sidebar-width));
+    }
+    
+    .voxify-footer .footer-container {
+        max-width: calc(100% - 48px);
+    }
+}
+
+/* ================= SCROLL TO TOP BUTTON ================= */
+.scroll-top-btn {
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+    width: 45px;
+    height: 45px;
+    background: var(--primary-blue);
+    color: white;
+    border: none;
+    border-radius: 50%;
+    cursor: pointer;
+    display: none;
+    align-items: center;
+    justify-content: center;
+    font-size: 20px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    transition: all 0.3s;
+    z-index: 999;
+}
+
+.scroll-top-btn:hover {
+    background: #1740b0;
+    transform: translateY(-3px);
+}
+
+.scroll-top-btn.show {
+    display: flex;
+}
+
+/* ================= TOAST NOTIFICATION ================= */
+.toast {
+    position: fixed;
+    bottom: 28px;
+    right: 28px;
+    background: #1a1a1a;
+    color: white;
+    padding: 12px 20px;
+    border-radius: 10px;
+    font-size: 13.5px;
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.2);
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    z-index: 9999;
+    transform: translateY(80px);
+    opacity: 0;
+    transition: transform 0.3s ease, opacity 0.3s ease;
+}
+
+.toast.show {
+    transform: translateY(0);
+    opacity: 1;
+}
+
+.toast.success svg {
+    color: #4caf50;
+}
+
+.toast.error svg {
+    color: var(--error-red);
+}

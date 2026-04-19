@@ -1,0 +1,451 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>VOXIFY | NOC Command Center</title>
+    <link rel="stylesheet" href="../../css/Network Operator Center/noc-dashboard.css">
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/design-tokens.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <link rel="stylesheet" href="../../css/cards.css">
+    <link rel="stylesheet" href="../../css/buttons.css">
+    <link rel="stylesheet" href="../../css/typography.css">	
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="voxify-navbar">
+    <div class="navbar-left">
+        <button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="navbar-logo">VOX<span>IFY</span></div>
+    </div>
+
+    <div class="navbar-search">
+        <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input type="text" id="searchInput" placeholder="Search incidents, regions, services...">
+    </div>
+
+    <div class="navbar-right">
+        <button class="nav-icon-btn" id="notifIconBtn" title="Notifications">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+            </svg>
+            <span class="nav-badge" id="globalUnreadBadge">3</span>
+        </button>
+
+        <div class="status-quick-view">
+            <button class="status-quick-btn" id="statusQuickBtn">
+                <span class="status-dot"></span>
+                <span>Network Status</span>
+                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="6 9 12 15 18 9"/>
+                </svg>
+            </button>
+            <div class="status-dropdown" id="statusDropdown">
+                <h4>Network Health</h4>
+                <div class="status-row"><span>Active Outages</span><span class="status active">4</span></div>
+                <div class="status-row"><span>Degraded Services</span><span class="status pending">2</span></div>
+                <div class="status-row"><span>All Systems Normal</span><span class="status resolved">12</span></div>
+            </div>
+        </div>
+
+        <div class="navbar-profile">
+            <button class="profile-btn" id="profileBtn">
+                <div class="profile-avatar">NK</div>
+                <span class="profile-name">Nikhil Kumar</span>
+                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="6 9 12 15 18 9"/>
+                </svg>
+            </button>
+            <div class="profile-dropdown" id="profileDropdown">
+                <a href="#"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>My Profile</a>
+                <a href="settings.html"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>Settings</a>
+                <hr>
+                <a href="../Authentication/login.html" class="logout"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>Logout</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- ================= SIDEBAR ================= -->
+<aside class="voxify-sidebar" id="voxifySidebar">
+    <div class="sidebar-user-info">
+        <div class="sidebar-avatar">NK</div>
+        <div class="sidebar-user-details">
+            <p>Nikhil Kumar</p>
+            <p>NOC Lead Engineer</p>
+        </div>
+    </div>
+    <nav class="sidebar-nav">
+        <div class="sidebar-section-label">Command Center</div>
+        <a href="noc-dashboard.html" class="active">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+            NOC Dashboard
+        </a>
+        <a href="live-monitoring.html">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Live Monitoring
+        </a>
+        <div class="sidebar-section-label">Incident Management</div>
+        <a href="outage-alerts.html">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            Active Outages
+            <span class="nav-badge-dot" style="background:#ef4444;">4</span>
+        </a>
+        <a href="auto-detection.html">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 2v4M12 18v4M4.93 4.93l2.83 2.83M16.24 16.24l2.83 2.83M2 12h4M18 12h4M4.93 19.07l2.83-2.83M16.24 7.76l2.83-2.83"/><circle cx="12" cy="12" r="3"/></svg>
+            Auto Detection
+        </a>
+        <div class="sidebar-section-label">Escalation</div>
+        <a href="manual-escalation.html">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Manual Escalation
+        </a>
+        <!-- <a href="#">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M13 2L3 14h9l-1 8 10-12h-9l1-8z"/></svg>
+            Auto Escalation Rules
+        </a> -->
+        <!-- <div class="sidebar-section-label">Reports</div>
+        <a href="#">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M2 20L22 20"/><path d="M4 16L8 8L13 12L20 4"/></svg>
+            Outage Reports
+        </a>
+        <a href="#">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><line x1="18" y1="20" x2="18" y2="10"/><line x1="12" y1="20" x2="12" y2="4"/><line x1="6" y1="20" x2="6" y2="14"/></svg>
+            SLA Reports
+        </a> -->
+        <div class="sidebar-section-label">Account</div>
+        <a href="settings.html">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            Settings
+        </a>
+    </nav>
+</aside>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- ================= MAIN LAYOUT ================= -->
+<div class="voxify-layout" id="voxifyLayout">
+    <div class="noc-dashboard">
+
+        <!-- Page Header with Live Status -->
+        <div class="page-header">
+            <div class="header-accent"></div>
+            <h1>NOC Command Center</h1>
+            <p>Real-time network monitoring, incident management, and escalation control</p>
+            <div class="system-status" id="systemStatus">
+                <span class="status-indicator warning"></span>
+                <span class="status-text">System Status: Degraded Performance - 4 Active Incidents</span>
+                <span class="last-updated">Last Updated: <span id="lastUpdated">Just now</span></span>
+            </div>
+        </div>
+
+        <!-- KPI Cards -->
+        <div class="kpi-grid">
+            <div class="kpi-card">
+                <div class="kpi-icon">⚠️</div>
+                <div class="kpi-info">
+                    <span>Active Incidents</span>
+                    <h3 id="activeIncidents">4</h3>
+                    <span class="trend up">↑ 2 from last hour</span>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon">⏱️</div>
+                <div class="kpi-info">
+                    <span>MTTA (Mean Time to Acknowledge)</span>
+                    <h3 id="mtta">4.2<span style="font-size:14px"> min</span></h3>
+                    <span class="trend down">↓ 0.8 min</span>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon">🔧</div>
+                <div class="kpi-info">
+                    <span>MTTR (Mean Time to Resolve)</span>
+                    <h3 id="mttr">47<span style="font-size:14px"> min</span></h3>
+                    <span class="trend up">↑ 12 min</span>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon">📡</div>
+                <div class="kpi-info">
+                    <span>Network Uptime</span>
+                    <h3 id="uptime">99.2<span style="font-size:14px">%</span></h3>
+                    <span class="trend down">↓ 0.3%</span>
+                </div>
+            </div>
+            <div class="kpi-card">
+                <div class="kpi-icon">👥</div>
+                <div class="kpi-info">
+                    <span>Affected Customers</span>
+                    <h3 id="affectedCustomers">2,847</h3>
+                    <span>Across 4 regions</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Network Health Map (Visual) -->
+        <div class="network-health-card">
+            <div class="card-header">
+                <h3>🌐 Network Health Map</h3>
+                <p>Real-time status of all regions</p>
+            </div>
+            <div class="region-grid">
+                <div class="region critical">
+                    <div class="region-name">Mumbai West</div>
+                    <div class="region-status">🔴 Critical Outage</div>
+                    <div class="region-impact">1,247 customers affected</div>
+                </div>
+                <div class="region warning">
+                    <div class="region-name">Delhi NCR</div>
+                    <div class="region-status">🟠 Partial Degradation</div>
+                    <div class="region-impact">892 customers affected</div>
+                </div>
+                <div class="region warning">
+                    <div class="region-name">Bangalore</div>
+                    <div class="region-status">🟠 High Latency</div>
+                    <div class="region-impact">456 customers affected</div>
+                </div>
+                <div class="region healthy">
+                    <div class="region-name">Chennai</div>
+                    <div class="region-status">🟢 Operational</div>
+                    <div class="region-impact">All services normal</div>
+                </div>
+                <div class="region healthy">
+                    <div class="region-name">Hyderabad</div>
+                    <div class="region-status">🟢 Operational</div>
+                    <div class="region-impact">All services normal</div>
+                </div>
+                <div class="region healthy">
+                    <div class="region-name">Pune</div>
+                    <div class="region-status">🟢 Operational</div>
+                    <div class="region-impact">All services normal</div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Active Incidents Table -->
+        <div class="incidents-card">
+            <div class="card-header">
+                <h3>🚨 Active Incidents</h3>
+                <p>Ongoing outages and service disruptions</p>
+                <button class="btn refresh-btn" id="refreshIncidentsBtn">🔄 Refresh</button>
+            </div>
+            <div class="table-responsive">
+                <table class="incident-table">
+                    <thead>
+                        <tr><th>Incident ID</th><th>Region</th><th>Service</th><th>Severity</th><th>Started</th><th>Duration</th><th>Status</th><th>Action</th>
+                    </thead>
+                    <tbody id="incidentsTableBody">
+                        <!-- Dynamic content -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+        <!-- Two Column: Charts + Escalation -->
+        <div class="two-column-grid">
+            <!-- Incident Trend Chart -->
+            <div class="chart-card">
+                <div class="card-header">
+                    <h3>📈 Incident Trend (Last 24 Hours)</h3>
+                    <select id="trendPeriod">
+                        <option value="24">Last 24 Hours</option>
+                        <option value="7">Last 7 Days</option>
+                        <option value="30">Last 30 Days</option>
+                    </select>
+                </div>
+                <canvas id="incidentTrendChart" height="200"></canvas>
+            </div>
+
+            <!-- Escalation Queue -->
+            <div class="escalation-card">
+                <div class="card-header">
+                    <h3>⏰ Pending Escalations</h3>
+                    <p>Tickets requiring immediate attention</p>
+                </div>
+                <div class="escalation-list" id="escalationList">
+                    <div class="escalation-item">
+                        <div class="escalation-priority critical">CRITICAL</div>
+                        <div class="escalation-info">
+                            <strong>INC-1042</strong> - Fiber cut in Andheri West
+                            <span>Waiting: 45 min</span>
+                        </div>
+                        <button class="escalate-btn" onclick="escalateIncident('INC-1042')">Escalate →</button>
+                    </div>
+                    <div class="escalation-item">
+                        <div class="escalation-priority high">HIGH</div>
+                        <div class="escalation-info">
+                            <strong>INC-1038</strong> - BSNL peer routing issue
+                            <span>Waiting: 32 min</span>
+                        </div>
+                        <button class="escalate-btn" onclick="escalateIncident('INC-1038')">Escalate →</button>
+                    </div>
+                    <div class="escalation-item">
+                        <div class="escalation-priority high">HIGH</div>
+                        <div class="escalation-info">
+                            <strong>INC-1035</strong> - High packet loss in Bangalore
+                            <span>Waiting: 28 min</span>
+                        </div>
+                        <button class="escalate-btn" onclick="escalateIncident('INC-1035')">Escalate →</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Technician Dispatch + Live Feed -->
+        <div class="two-column-grid">
+            <!-- Technician Availability -->
+            <div class="tech-card">
+                <div class="card-header">
+                    <h3>👨‍🔧 Field Technician Status</h3>
+                    <p>Available for dispatch</p>
+                </div>
+                <div class="tech-list" id="techList">
+                    <div class="tech-item">
+                        <div class="tech-avatar">AJ</div>
+                        <div class="tech-details">
+                            <strong>Armaan J.</strong>
+                            <span>Fiber Specialist</span>
+                        </div>
+                        <div class="tech-status available">● Available</div>
+                        <button class="dispatch-btn" onclick="dispatchTechnician('Armaan J.')">Dispatch</button>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-avatar">RK</div>
+                        <div class="tech-details">
+                            <strong>Rahul K.</strong>
+                            <span>Network Engineer</span>
+                        </div>
+                        <div class="tech-status available">● Available</div>
+                        <button class="dispatch-btn" onclick="dispatchTechnician('Rahul K.')">Dispatch</button>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-avatar">VS</div>
+                        <div class="tech-details">
+                            <strong>Vikram S.</strong>
+                            <span>RF Engineer</span>
+                        </div>
+                        <div class="tech-status busy">● On-site</div>
+                        <button style="width: 16%" class="dispatch-btn disabled" disabled>Busy</button>
+                    </div>
+                    <div class="tech-item">
+                        <div class="tech-avatar">PR</div>
+                        <div class="tech-details">
+                            <strong>Priya R.</strong>
+                            <span>NOC Support</span>
+                        </div>
+                        <div class="tech-status available">● Available</div>
+                        <button class="dispatch-btn" onclick="dispatchTechnician('Priya R.')">Dispatch</button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Live Incident Feed -->
+            <div class="live-feed-card">
+                <div class="card-header">
+                    <h3>📡 Live Incident Feed</h3>
+                    <p>Real-time updates from network monitoring</p>
+                    <span class="live-badge">● LIVE</span>
+                </div>
+                <div class="feed-list" id="liveFeed">
+                    <div class="feed-item">
+                        <span class="feed-time">Just now</span>
+                        <span class="feed-message">🔴 New critical incident: Fiber cut detected in Andheri West</span>
+                    </div>
+                    <div class="feed-item">
+                        <span class="feed-time">2 min ago</span>
+                        <span class="feed-message">🟠 BSNL peer reported high latency in Delhi NCR region</span>
+                    </div>
+                    <div class="feed-item">
+                        <span class="feed-time">5 min ago</span>
+                        <span class="feed-message">✅ Incident INC-1032 resolved in Pune region</span>
+                    </div>
+                    <div class="feed-item">
+                        <span class="feed-time">8 min ago</span>
+                        <span class="feed-message">📢 Broadcast: Scheduled maintenance in Chennai tomorrow 2 AM</span>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions">
+            <button class="action-btn primary" onclick="showToast('Creating new incident ticket', 'info')">
+                ➕ Create Incident
+            </button>
+            <button class="action-btn" onclick="showToast('Broadcasting outage update', 'success')">
+                📢 Broadcast Update
+            </button>
+            <button class="action-btn" onclick="window.location.href='manual-escalation.html'">
+                🚨 Manual Escalation
+            </button>
+            <button class="action-btn" onclick="showToast('Generating outage report', 'info')">
+                📊 Generate Report
+            </button>
+            <button class="action-btn" onclick="showToast('Running network diagnostics', 'info')">
+                🔍 Run Diagnostics
+            </button>
+        </div>
+
+    </div>
+</div>
+
+<!-- Toast Notification -->
+<div class="toast" id="toast">
+    <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+        <polyline points="20 6 9 17 4 12"/>
+    </svg>
+    <span id="toastMsg"></span>
+</div>
+
+<!-- Escalate Modal -->
+<div class="modal" id="escalateModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3>Escalate Incident</h3>
+            <button class="modal-close" id="closeEscalateModal">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p>Select escalation level for <strong id="escalateIncidentId">INC-XXXX</strong></p>
+            <select id="escalationLevel" class="escalation-select">
+                <option value="L1">Level 1 - Team Lead</option>
+                <option value="L2">Level 2 - NOC Manager</option>
+                <option value="L3">Level 3 - Regional Head</option>
+                <option value="L4">Level 4 - Director</option>
+            </select>
+            <textarea id="escalationReason" placeholder="Reason for escalation..." rows="3"></textarea>
+        </div>
+        <div class="modal-footer">
+            <button class="btn secondary" id="cancelEscalateBtn">Cancel</button>
+            <button class="btn primary" id="confirmEscalateBtn">Confirm Escalation</button>
+        </div>
+    </div>
+</div>
+<!-- ================= FOOTER ================= -->
+<footer class="voxify-footer">
+    <div class="footer-container">
+        <div class="footer-grid">
+            <div class="footer-col"><div class="footer-logo">VOX<span>IFY</span></div><p class="footer-about">Empowering citizens with efficient complaint management and real-time outage detection system.</p><div class="footer-social"><a href="#" class="social-icon">📘</a><a href="#" class="social-icon">🐦</a><a href="#" class="social-icon">📷</a><a href="#" class="social-icon">🔗</a></div></div>
+            <div class="footer-col"><h4>Quick Links</h4><ul class="footer-links"><li><a href="noc-dashboard.html">Dashboard</a></li><li><a href="complaint-form.html">Submit Complaint</a></li><li><a href="tracking.html">Track Status</a></li><li><a href="alerts.html">Alerts</a></li><li><a href="feedback.html">Feedback</a></li></ul></div>
+            <div class="footer-col"><h4>Support</h4><ul class="footer-links"><li><a href="help-center.html">Help Center</a></li><li><a href="faqs.html">FAQs</a></li><li><a href="help-center.html">Contact Support</a></li><li><a href="privacy-policy.html">Privacy Policy</a></li><li><a href="terms-of-service.html">Terms of Service</a></li></ul></div>
+            <div class="footer-col"><h4>Contact Us</h4><ul class="footer-contact"><li>📞 <a href="tel:+911234567890">+91 12345 67890</a></li><li>📧 <a href="mailto:support@voxify.com">support@voxify.com</a></li><li>🏢 Mumbai, Maharashtra, India</li></ul><div class="footer-badge"><span>24/7 Support</span><span>ISO Certified</span></div></div>
+        </div>
+        <div class="footer-bottom"><p>&copy; 2025 VOXIFY - Complaint Management & Outage Detection System. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Sitemap</a><a href="#">Accessibility</a><a href="#">Cookie Policy</a></div></div>
+    </div>
+</footer>
+
+
+
+<script src="../../js/Network Operator Center/noc-dashboard.js"></script>
+</body>
+</html>

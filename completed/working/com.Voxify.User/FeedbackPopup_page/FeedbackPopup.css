@@ -1,0 +1,81 @@
+/* Overlay */
+.feedback-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: none;
+  justify-content: center;
+  align-items: center;
+  z-index: 1000;
+}
+
+/* Popup */
+.feedback-popup {
+  background: #fff;
+  width: 360px;
+  padding: 20px;
+  border-radius: 8px;
+  font-family: Arial, sans-serif;
+}
+
+/* Title */
+.feedback-popup h3 {
+  margin-bottom: 5px;
+}
+
+.complaint-id {
+  font-size: 14px;
+  color: #555;
+}
+
+/* Stars */
+.stars span {
+  font-size: 24px;
+  cursor: pointer;
+  color: #ccc;
+}
+
+.stars span.active {
+  color: #f5b301;
+}
+
+/* Sections */
+.rating-section,
+.experience-section {
+  margin: 15px 0;
+}
+
+.experience-section label {
+  display: block;
+  font-size: 14px;
+}
+
+/* Textarea */
+textarea {
+  width: 100%;
+  height: 70px;
+  margin: 10px 0;
+  padding: 8px;
+  resize: none;
+}
+
+/* Buttons */
+.feedback-actions {
+  display: flex;
+  gap: 10px;
+}
+
+.feedback-actions button {
+  flex: 1;
+  padding: 8px;
+  border: none;
+  cursor: pointer;
+  border-radius: 4px;
+  background: #007bff;
+  color: #fff;
+}
+
+.feedback-actions .secondary {
+  background: #ccc;
+  color: #000;
+}

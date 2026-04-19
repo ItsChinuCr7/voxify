@@ -1,0 +1,331 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>VOXIFY | Support Agent Dashboard</title>
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/Senior Support Agent/support-dashboard.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/design-tokens.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <link rel="stylesheet" href="../../css/cards.css">
+    <link rel="stylesheet" href="../../css/buttons.css">
+    <link rel="stylesheet" href="../../css/typography.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="voxify-navbar">
+    <div class="navbar-left">
+        <button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="navbar-logo">VOX<span>IFY</span></div>
+    </div>
+
+    <div class="navbar-search">
+        <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input type="text" id="searchInput" placeholder="Search tickets, customers, complaints...">
+    </div>
+
+    <div class="navbar-right">
+        <button class="nav-icon-btn" id="notifIconBtn" title="Notifications">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+            </svg>
+            <span class="nav-badge" id="globalUnreadBadge">8</span>
+        </button>
+
+        <div class="status-quick-view">
+            <button class="status-quick-btn" id="statusQuickBtn">
+                <span class="status-dot"></span>
+                <span>Status</span>
+                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="6 9 12 15 18 9"/>
+                </svg>
+            </button>
+            <div class="status-dropdown" id="statusDropdown">
+                <h4>Ticket Status</h4>
+                <div class="status-row"><span>Open Tickets</span><span class="status active" id="dropdownOpen">0</span></div>
+                <div class="status-row"><span>In Progress</span><span class="status pending" id="dropdownProgress">0</span></div>
+                <div class="status-row"><span>Resolved Today</span><span class="status resolved" id="dropdownResolved">0</span></div>
+            </div>
+        </div>
+
+        <div class="navbar-profile">
+            <button class="profile-btn" id="profileBtn">
+                <div class="profile-avatar">RS</div>
+                <span class="profile-name">Rahul Sharma</span>
+                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="6 9 12 15 18 9"/>
+                </svg>
+            </button>
+            <div class="profile-dropdown" id="profileDropdown">
+                <a href="#"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>My Profile</a>
+                <a href="settings.html"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>Settings</a>
+                <hr>
+                <a href="../Authentication/login.html" class="logout"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>Logout</a>
+            </div>
+        </div>
+    </div>
+</nav>
+
+<!-- ================= SIDEBAR ================= -->
+<aside class="voxify-sidebar" id="voxifySidebar">
+    <div class="sidebar-user-info">
+        <div class="sidebar-avatar">RS</div>
+        <div class="sidebar-user-details">
+            <p>Rahul Sharma</p>
+            <p>Senior Support Agent</p>
+        </div>
+    </div>
+    <nav class="sidebar-nav">
+        <div class="sidebar-section-label">Main Menu</div>
+        <a href="support-dashboard.html" class="active">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+            Dashboard
+        </a>
+        <a href="ticket-operations.html">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>
+            Ticket Queue
+            <span class="nav-badge-dot">12</span>
+        </a>
+        <!-- <a href="ticket-history.html">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Ticket History
+        </a> -->
+        <div class="sidebar-section-label">Operations</div>
+        <a href="assign-technician.html">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+            Assign Technician
+        </a>
+        <a href="live-monitoring.html">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+            Live Monitoring
+        </a>
+        <a href="outage-alerts.html">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+            Outage Alerts
+        </a>
+        <div class="sidebar-section-label">Customer</div>
+        <a href="agent-log-complaint.html">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M11 4H4a2 2 0 0 0-2 2v14a2 2 0 0 0 2 2h14a2 2 0 0 0 2-2v-7"/><path d="M18.5 2.5a2.121 2.121 0 0 1 3 3L12 15l-4 1 1-4 9.5-9.5z"/></svg>
+            Log Complaint
+        </a>
+        <div class="sidebar-section-label">Account</div>
+        <a href="settings.html">
+            <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+            Settings
+        </a>
+    </nav>
+</aside>
+
+<div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- ================= MAIN LAYOUT ================= -->
+<div class="voxify-layout" id="voxifyLayout">
+    <div class="support-dashboard">
+
+        <!-- Page Header -->
+        <div class="page-header">
+            <div class="header-accent"></div>
+            <h1>Support Agent Dashboard</h1>
+            <p>Manage tickets, track performance, and resolve customer issues efficiently</p>
+        </div>
+
+        <!-- Stats Cards Row -->
+        <div class="stats-grid">
+            <div class="stat-card open">
+                <div class="stat-icon">🎫</div>
+                <div class="stat-info">
+                    <h4>Open Tickets</h4>
+                    <h2 id="openTickets">0</h2>
+                    <span>Awaiting response</span>
+                </div>
+            </div>
+            <div class="stat-card in-progress">
+                <div class="stat-icon">⚙️</div>
+                <div class="stat-info">
+                    <h4>In Progress</h4>
+                    <h2 id="inProgressTickets">0</h2>
+                    <span>Being worked on</span>
+                </div>
+            </div>
+            <div class="stat-card resolved">
+                <div class="stat-icon">✅</div>
+                <div class="stat-info">
+                    <h4>Resolved Today</h4>
+                    <h2 id="resolvedToday">0</h2>
+                    <span>↑ 23% from yesterday</span>
+                </div>
+            </div>
+            <div class="stat-card escalation">
+                <div class="stat-icon">🚨</div>
+                <div class="stat-info">
+                    <h4>Escalated</h4>
+                    <h2 id="escalatedTickets">0</h2>
+                    <span>Needs attention</span>
+                </div>
+            </div>
+        </div>
+
+        <!-- Two Column: SLA & Performance -->
+        <div class="two-column-grid">
+            <!-- SLA Compliance Card -->
+            <div class="settings-card">
+                <div class="settings-card-header">
+                    <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <circle cx="12" cy="12" r="10"/>
+                        <polyline points="12 6 12 12 16 14"/>
+                    </svg>
+                    <div>
+                        <h3>SLA Compliance</h3>
+                        <p>Response & resolution metrics</p>
+                    </div>
+                </div>
+                <div class="settings-card-body">
+                    <div class="sla-metrics">
+                        <div class="sla-item">
+                            <div class="sla-label">Response Time</div>
+                            <div class="sla-value" id="responseTime">4.2 min</div>
+                            <div class="sla-progress"><div class="sla-fill" style="width: 92%"></div></div>
+                            <div class="sla-status success">✓ Within SLA (92%)</div>
+                        </div>
+                        <div class="sla-item">
+                            <div class="sla-label">Resolution Time</div>
+                            <div class="sla-value" id="resolutionTime">2.4 hours</div>
+                            <div class="sla-progress"><div class="sla-fill" style="width: 78%"></div></div>
+                            <div class="sla-status warning">⚠️ 78% within SLA</div>
+                        </div>
+                        <div class="sla-item">
+                            <div class="sla-label">First Contact Resolution</div>
+                            <div class="sla-value" id="fcrRate">68%</div>
+                            <div class="sla-progress"><div class="sla-fill" style="width: 68%"></div></div>
+                            <div class="sla-status warning">Target: 75%</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Agent Performance Card -->
+            <div class="settings-card">
+                <div class="settings-card-header">
+                    <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/>
+                        <circle cx="12" cy="7" r="4"/>
+                    </svg>
+                    <div>
+                        <h3>Your Performance</h3>
+                        <p>Personal metrics & achievements</p>
+                    </div>
+                </div>
+                <div class="settings-card-body">
+                    <div class="agent-metrics">
+                        <div class="metric-badge"><span class="metric-value" id="ticketsClosed">47</span><span class="metric-label">Tickets Closed (This Week)</span></div>
+                        <div class="metric-badge"><span class="metric-value" id="avgRating">4.8</span><span class="metric-label">Customer Rating ★</span></div>
+                        <div class="metric-badge"><span class="metric-value" id="responseRank">3rd</span><span class="metric-label">Fastest Responder</span></div>
+                    </div>
+                    <div class="achievement-badges">
+                        <div class="achievement"><span class="achieve-icon">🏆</span><span>Top Performer - March</span></div>
+                        <div class="achievement"><span class="achieve-icon">⚡</span><span>100 Tickets Milestone</span></div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Charts Row -->
+        <div class="charts-grid">
+            <div class="settings-card">
+                <div class="settings-card-header">
+                    <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polyline points="22 12 18 12 15 21 9 3 6 12 2 12"/></svg>
+                    <div><h3>Ticket Trend (Last 7 Days)</h3><p>Daily ticket volume</p></div>
+                    <select id="trendPeriod" class="period-select"><option value="7">Last 7 Days</option><option value="30">Last 30 Days</option></select>
+                </div>
+                <div class="settings-card-body"><canvas id="trendChart" width="400" height="200"></canvas></div>
+            </div>
+            <div class="settings-card">
+                <div class="settings-card-header">
+                    <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/></svg>
+                    <div><h3>Issue Distribution</h3><p>By category & priority</p></div>
+                </div>
+                <div class="settings-card-body"><canvas id="categoryChart" width="400" height="200"></canvas></div>
+            </div>
+        </div>
+
+        <!-- Priority & Recent Tickets -->
+        <div class="two-column-grid">
+            <div class="settings-card">
+                <div class="settings-card-header">
+                    <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M12 8v4l3 3M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/></svg>
+                    <div><h3>Priority Breakdown</h3><p>Tickets by priority level</p></div>
+                </div>
+                <div class="settings-card-body">
+                    <div class="priority-list">
+                        <div class="priority-item critical"><span class="priority-label">🔴 Critical</span><div class="priority-bar"><div class="priority-fill critical-fill" style="width: 25%"></div></div><span class="priority-count" id="criticalCount">0</span></div>
+                        <div class="priority-item high"><span class="priority-label">🟠 High</span><div class="priority-bar"><div class="priority-fill high-fill" style="width: 30%"></div></div><span class="priority-count" id="highCount">0</span></div>
+                        <div class="priority-item medium"><span class="priority-label">🟡 Medium</span><div class="priority-bar"><div class="priority-fill medium-fill" style="width: 25%"></div></div><span class="priority-count" id="mediumCount">0</span></div>
+                        <div class="priority-item low"><span class="priority-label">🟢 Low</span><div class="priority-bar"><div class="priority-fill low-fill" style="width: 20%"></div></div><span class="priority-count" id="lowCount">0</span></div>
+                    </div>
+                </div>
+            </div>
+            <div class="settings-card">
+                <div class="settings-card-header">
+                    <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/></svg>
+                    <div><h3>Recent Tickets</h3><p>Latest customer complaints</p></div>
+                    <button class="btn-secondary-sm" id="viewAllBtn">View All →</button>
+                </div>
+                <div class="settings-card-body">
+                    <div class="table-responsive">
+                        <table class="data-table"><thead><tr><th>Ticket ID</th><th>Customer</th><th>Issue</th><th>Priority</th><th>Status</th><th>Action</th></tr></thead><tbody id="recentTicketsBody"><tr><td colspan="6" class="loading-state">Loading tickets...</td></tr></tbody></table>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Live Activity Feed -->
+        <div class="settings-card">
+            <div class="settings-card-header">
+                <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                <div><h3>Live Activity Feed</h3><p>Real-time ticket updates</p></div>
+                <span class="live-badge">● LIVE</span>
+            </div>
+            <div class="settings-card-body"><div class="activity-feed" id="activityFeed"></div></div>
+            <div class="settings-card-footer"><button class="btn-secondary" id="refreshActivityBtn">🔄 Refresh</button></div>
+        </div>
+
+        <!-- Quick Actions -->
+        <div class="quick-actions-grid">
+            <button class="quick-action-btn" onclick="window.location.href='agent-log-complaint.html'"><span>📝</span> Log New Complaint</button>
+            <button class="quick-action-btn" onclick="showToast('Viewing ticket queue', 'info')"><span>🎫</span> View Ticket Queue</button>
+            <button class="quick-action-btn" onclick="showToast('Opening knowledge base', 'info')"><span>📚</span> Knowledge Base</button>
+            <button class="quick-action-btn" onclick="showToast('Exporting report', 'success')"><span>📊</span> Export Report</button>
+        </div>
+
+    </div>
+</div>
+
+<!-- Toast Notification -->
+<div class="toast" id="toast"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span id="toastMsg"></span></div>
+
+<!-- ================= FOOTER ================= -->
+<footer class="voxify-footer">
+    <div class="footer-container">
+        <div class="footer-grid">
+            <div class="footer-col"><div class="footer-logo">VOX<span>IFY</span></div><p class="footer-about">Empowering citizens with efficient complaint management and real-time outage detection system.</p><div class="footer-social"><a href="#" class="social-icon">📘</a><a href="#" class="social-icon">🐦</a><a href="#" class="social-icon">📷</a><a href="#" class="social-icon">🔗</a></div></div>
+            <div class="footer-col"><h4>Quick Links</h4><ul class="footer-links"><li><a href="dashboard.html">Dashboard</a></li><li><a href="complaint-form.html">Submit Complaint</a></li><li><a href="tracking.html">Track Status</a></li><li><a href="alerts.html">Alerts</a></li><li><a href="feedback.html">Feedback</a></li></ul></div>
+            <div class="footer-col"><h4>Support</h4><ul class="footer-links"><li><a href="help-center.html">Help Center</a></li><li><a href="faqs.html">FAQs</a></li><li><a href="help-center.html">Contact Support</a></li><li><a href="privacy-policy.html">Privacy Policy</a></li><li><a href="terms-of-service.html">Terms of Service</a></li></ul></div>
+            <div class="footer-col"><h4>Contact Us</h4><ul class="footer-contact"><li>📞 <a href="tel:+911234567890">+91 12345 67890</a></li><li>📧 <a href="mailto:support@voxify.com">support@voxify.com</a></li><li>🏢 Mumbai, Maharashtra, India</li></ul><div class="footer-badge"><span>24/7 Support</span><span>ISO Certified</span></div></div>
+        </div>
+        <div class="footer-bottom"><p>&copy; 2025 VOXIFY - Complaint Management & Outage Detection System. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Sitemap</a><a href="#">Accessibility</a><a href="#">Cookie Policy</a></div></div>
+    </div>
+</footer>
+
+<script src="../../js/Senior Support Agent/support-dashboard.js"></script>
+</body>
+</html>

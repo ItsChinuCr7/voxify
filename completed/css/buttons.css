@@ -1,0 +1,34 @@
+/* =========================================================
+   GLOBAL BUTTON STYLES
+========================================================= */
+
+.btn {
+  padding: 10px 24px;
+  border-radius: var(--border-radius-md);
+  border: none;
+  cursor: pointer;
+  font-size: var(--font-size-sm);
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+/* Primary */
+.btn-primary {
+  background: var(--color-primary);
+  color: var(--text-white);
+}
+
+.btn-primary:hover {
+  background: var(--color-primary-dark);
+  transform: translateY(-1px);
+}
+
+/* Secondary */
+.btn-secondary {
+  background: var(--bg-muted);
+  color: var(--text-primary);
+}
+
+.btn-secondary:hover {
+  background: var(--color-primary-light);
+}

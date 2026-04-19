@@ -1,0 +1,47 @@
+/* =========================================================
+   VOXIFY TYPOGRAPHY SYSTEM
+   Used across ALL pages (dashboard, forms, alerts, admin)
+========================================================= */
+
+body {
+  font-family: var(--font-family-base);
+  font-size: var(--font-size-md);
+  background: var(--bg-body);
+  color: var(--text-primary);
+}
+
+/* ================= HEADINGS ================= */
+h1 {
+  font-size: var(--font-size-xxl);
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 22px;
+  font-weight: 600;
+}
+
+h3 {
+  font-size: 18px;
+  font-weight: 600;
+}
+
+h4 {
+  font-size: var(--font-size-lg);
+  font-weight: 600;
+}
+
+/* ================= TEXT ================= */
+p {
+  font-size: var(--font-size-md);
+  color: var(--text-secondary);
+  line-height: 1.6;
+}
+
+.text-muted {
+  color: var(--text-muted);
+}
+
+.text-center {
+  text-align: center;
+}

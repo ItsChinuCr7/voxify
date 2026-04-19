@@ -1,0 +1,545 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>VOXIFY | Alert Delivery Channels</title>
+    <link rel="stylesheet" href="../../css/Admin Dashboard/alert-delivery.css">
+    <link rel="stylesheet" href="../../css/common.css">
+    <link rel="stylesheet" href="../../css/style.css">
+    <link rel="stylesheet" href="../../css/design-tokens.css">
+    <link rel="stylesheet" href="../../css/responsive.css">
+    <link rel="stylesheet" href="../../css/cards.css">
+    <link rel="stylesheet" href="../../css/buttons.css">
+    <link rel="stylesheet" href="../../css/typography.css">
+</head>
+<body>
+
+<!-- ================= NAVBAR ================= -->
+<nav class="voxify-navbar">
+    <div class="navbar-left">
+        <button class="sidebar-toggle" id="sidebarToggle" title="Toggle Sidebar">
+            <span></span><span></span><span></span>
+        </button>
+        <div class="navbar-logo" onclick="window.location.href='admin-dashboard.html'" style="cursor:pointer;">VOX<span>IFY</span></div>
+    </div>
+
+    <div class="navbar-search">
+        <svg width="15" height="15" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+            <circle cx="11" cy="11" r="8"/>
+            <line x1="21" y1="21" x2="16.65" y2="16.65"/>
+        </svg>
+        <input type="text" id="searchHistory" placeholder="Search delivery history...">
+    </div>
+
+    <div class="navbar-right">
+        <button class="nav-icon-btn" id="notifIconBtn" title="Notifications" onclick="window.location.href='alerts.html'">
+            <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                <path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/>
+                <path d="M13.73 21a2 2 0 0 1-3.46 0"/>
+            </svg>
+            <span class="nav-badge">5</span>
+        </button>
+
+        <div class="status-quick-view">
+            <button class="status-quick-btn" id="statusQuickBtn">
+                <span class="status-dot"></span>
+                <span>Status</span>
+                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="6 9 12 15 18 9"/>
+                </svg>
+            </button>
+            <div class="status-dropdown" id="statusDropdown">
+                <h4>Alert Status</h4>
+                <div class="status-row"><span>Delivered</span><span class="status active">127</span></div>
+                <div class="status-row"><span>Pending</span><span class="status pending">3</span></div>
+                <div class="status-row"><span>Failed</span><span class="status resolved">2</span></div>
+            </div>
+        </div>
+
+        <div class="navbar-profile">
+            <button class="profile-btn" id="profileBtn">
+                <div class="profile-avatar">AD</div>
+                <span class="profile-name">Admin</span>
+                <svg width="12" height="12" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5">
+                    <polyline points="6 9 12 15 18 9"/>
+                </svg>
+            </button>
+            <div class="profile-dropdown" id="profileDropdown">
+                <a href="profile.html"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>My Profile</a>
+                <a href="settings.html"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>Settings</a>
+                <hr>
+                <a href="#" class="logout" onclick="logout()"><svg width="14" height="14" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M9 21H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h4"/><polyline points="16 17 21 12 16 7"/><line x1="21" y1="12" x2="9" y2="12"/></svg>Logout</a>
+            </div>
+        </div>
+    </div>
+</nav>
+<!-- ================= SIDEBAR ================= -->
+    <aside class="voxify-sidebar" id="voxifySidebar">
+        <div class="sidebar-user-info">
+            <div class="sidebar-avatar">AD</div>
+            <div class="sidebar-user-details">
+                <p>Admin User</p>
+                <p>System Administrator</p>
+            </div>
+        </div>
+        <nav class="sidebar-nav">
+            <div class="sidebar-section-label">Main Menu</div>
+            <a href="admin-dashboard.html" >
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/></svg>
+                Dashboard
+            </a>
+            <a href="user-management.html">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg>
+                User Management
+            </a>
+            <a href="sla-alerts.html">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M18 8A6 6 0 0 0 6 8c0 7-3 9-3 9h18s-3-2-3-9"/><path d="M13.73 21a2 2 0 0 1-3.46 0"/></svg>
+                SLA Alerts
+            </a>
+            <a href="alert-delivery.html" class="active">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.99 12 19.79 19.79 0 0 1 1.95 3.4 2 2 0 0 1 3.91 1.22h3a2 2 0 0 1 2 1.72c.127.96.361 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 8.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.339 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+                Alert Delivery
+            </a>
+
+            <div class="sidebar-section-label">Monitoring</div>
+            <a href="live-monitoring.html">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+                Live Monitoring
+            </a>
+            <a href="outage-alerts.html">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+                Outage Alerts
+            </a>
+            <div class="sidebar-section-label">Analytics</div>
+            <a href="analytics-dashboard.html">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M2 20L22 20"/><path d="M4 16L8 8L13 12L20 4"/></svg>
+                Complaint Analysis
+            </a>
+            <a href="severity-dashboard.html">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/></svg>
+                Severity Dashboard
+            </a>
+			<a href="clustered-complaints.html">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><path d="M4 4h16v16H4z"/><line x1="9" y1="9" x2="15" y2="15"/><line x1="15" y1="9" x2="9" y2="15"/></svg>
+                Clustured Complaints
+            </a>
+            <div class="sidebar-section-label">Account</div>
+            <a href="settings.html">
+                <svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2"><circle cx="12" cy="12" r="3"/><path d="M19.4 15a1.65 1.65 0 0 0 .33 1.82l.06.06a2 2 0 0 1-2.83 2.83l-.06-.06a1.65 1.65 0 0 0-1.82-.33 1.65 1.65 0 0 0-1 1.51V21a2 2 0 0 1-4 0v-.09A1.65 1.65 0 0 0 9 19.4a1.65 1.65 0 0 0-1.82.33l-.06.06a2 2 0 0 1-2.83-2.83l.06-.06A1.65 1.65 0 0 0 4.68 15a1.65 1.65 0 0 0-1.51-1H3a2 2 0 0 1 0-4h.09A1.65 1.65 0 0 0 4.6 9a1.65 1.65 0 0 0-.33-1.82l-.06-.06a2 2 0 0 1 2.83-2.83l.06.06A1.65 1.65 0 0 0 9 4.68a1.65 1.65 0 0 0 1-1.51V3a2 2 0 0 1 4 0v.09a1.65 1.65 0 0 0 1 1.51 1.65 1.65 0 0 0 1.82-.33l.06-.06a2 2 0 0 1 2.83 2.83l-.06.06A1.65 1.65 0 0 0 19.4 9a1.65 1.65 0 0 0 1.51 1H21a2 2 0 0 1 0 4h-.09a1.65 1.65 0 0 0-1.51 1z"/></svg>
+                System Settings
+            </a>
+        </nav>
+    </aside>
+
+    <div class="sidebar-overlay" id="sidebarOverlay"></div>
+
+<!-- ================= MAIN LAYOUT ================= -->
+<div class="voxify-layout" id="voxifyLayout">
+    <div class="delivery-page">
+        <div class="page-header">
+            <div class="header-accent"></div>
+            <h1>Alert Delivery Channels</h1>
+            <p>Configure notification channels, manage recipients, and monitor delivery status</p>
+        </div>
+
+        <!-- Tabs - ONLY BUTTONS CLICKABLE -->
+        <div class="delivery-tabs">
+            <button class="delivery-tab active" data-tab="channels" onclick="switchTab('channels')">📡 Delivery Channels</button>
+            <button class="delivery-tab" data-tab="recipients" onclick="switchTab('recipients')">👥 Recipients</button>
+            <button class="delivery-tab" data-tab="history" onclick="switchTab('history')">📜 Delivery History</button>
+        </div>
+
+        <!-- ================= CHANNELS TAB ================= -->
+        <div id="channelsTab" class="delivery-tab-content active">
+            <!-- SMS Channel - Card body NOT clickable, only inputs and save button -->
+            <div class="channel-card">
+                <div class="channel-header">
+                    <div class="channel-icon">📱</div>
+                    <div class="channel-info">
+                        <h3>SMS</h3>
+                        <p>Send alerts via SMS to mobile numbers</p>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="smsEnabled" checked>
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                <div class="channel-body">
+                    <div class="setting-group">
+                        <label>SMS Gateway</label>
+                        <input type="text" id="smsGateway" value="https://api.voxify.com/sms" placeholder="SMS Gateway URL">
+                    </div>
+                    <div class="setting-group">
+                        <label>Sender ID</label>
+                        <input type="text" id="senderId" value="VOXIFY" placeholder="Sender ID (6 chars)">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Webhook Channel -->
+            <div class="channel-card">
+                <div class="channel-header">
+                    <div class="channel-icon">🔗</div>
+                    <div class="channel-info">
+                        <h3>Webhook</h3>
+                        <p>Send alerts to external endpoints</p>
+                    </div>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="webhookEnabled">
+                        <span class="toggle-slider"></span>
+                    </label>
+                </div>
+                <div class="channel-body">
+                    <div class="setting-group">
+                        <label>Webhook URL</label>
+                        <input type="url" id="webhookUrl" placeholder="https://your-endpoint.com/webhook">
+                    </div>
+                    <div class="setting-group">
+                        <label>Secret Key</label>
+                        <input type="password" id="webhookSecret" placeholder="Optional secret key">
+                    </div>
+                </div>
+            </div>
+
+            <!-- Severity Preferences -->
+            <div class="settings-card">
+                <div class="settings-card-header">
+                    <svg width="18" height="18" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2">
+                        <path d="M12 8v4l3 3M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z"/>
+                    </svg>
+                    <div><h3>Notification Preferences by Severity</h3><p>Configure which channels are used for each severity level</p></div>
+                </div>
+                <div class="settings-card-body">
+                    <div class="severity-table">
+                        <div class="severity-row header">
+                            <div>Severity</div>
+                            <div>Email</div>
+                            <div>SMS</div>
+                            <div>Webhook</div>
+                            <div>Slack</div>
+                        </div>
+                        <div class="severity-row critical">
+                            <div><span class="severity-badge critical">🔴 Critical</span></div>
+                            <div><input type="checkbox" class="severity-channel" data-severity="critical" data-channel="email" checked></div>
+                            <div><input type="checkbox" class="severity-channel" data-severity="critical" data-channel="sms" checked></div>
+                            <div><input type="checkbox" class="severity-channel" data-severity="critical" data-channel="webhook" checked></div>
+                            <div><input type="checkbox" class="severity-channel" data-severity="critical" data-channel="slack" checked></div>
+                        </div>
+                        <div class="severity-row warning">
+                            <div><span class="severity-badge warning">🟠 Warning</span></div>
+                            <div><input type="checkbox" class="severity-channel" data-severity="warning" data-channel="email" checked></div>
+                            <div><input type="checkbox" class="severity-channel" data-severity="warning" data-channel="sms" checked></div>
+                            <div><input type="checkbox" class="severity-channel" data-severity="warning" data-channel="webhook"></div>
+                            <div><input type="checkbox" class="severity-channel" data-severity="warning" data-channel="slack"></div>
+                        </div>
+                        <div class="severity-row info">
+                            <div><span class="severity-badge info">🔵 Info</span></div>
+                            <div><input type="checkbox" class="severity-channel" data-severity="info" data-channel="email" checked></div>
+                            <div><input type="checkbox" class="severity-channel" data-severity="info" data-channel="sms"></div>
+                            <div><input type="checkbox" class="severity-channel" data-severity="info" data-channel="webhook"></div>
+                            <div><input type="checkbox" class="severity-channel" data-severity="info" data-channel="slack"></div>
+                        </div>
+                    </div>
+                    <div class="form-actions">
+                        <button class="btn primary-btn" id="saveChannelSettings" onclick="saveChannelSettings()">Save Channel Settings</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- ================= RECIPIENTS TAB ================= -->
+        <div id="recipientsTab" class="delivery-tab-content">
+            <div class="action-bar">
+                <button class="btn primary-btn" id="addRecipientBtn" onclick="openAddRecipientModal()">+ Add Recipient</button>
+                <div class="filter-group">
+                    <input type="text" id="recipientSearch" placeholder="Search recipients..." class="filter-input" onkeyup="filterRecipients()">
+                </div>
+            </div>
+            <div class="recipients-grid" id="recipientsGrid"></div>
+        </div>
+
+        <!-- ================= HISTORY TAB ================= -->
+        <div id="historyTab" class="delivery-tab-content">
+            <div class="filter-bar">
+                <div class="filter-group">
+                    <select id="historySeverityFilter" class="filter-select" onchange="filterHistory()">
+                        <option value="all">All Severities</option>
+                        <option value="critical">Critical</option>
+                        <option value="warning">Warning</option>
+                        <option value="info">Info</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <select id="historyStatusFilter" class="filter-select" onchange="filterHistory()">
+                        <option value="all">All Status</option>
+                        <option value="delivered">Delivered</option>
+                        <option value="pending">Pending</option>
+                        <option value="failed">Failed</option>
+                    </select>
+                </div>
+                <div class="filter-group">
+                    <input type="text" id="historySearch" placeholder="Search by alert, recipient..." class="filter-input" onkeyup="filterHistory()">
+                </div>
+                <button class="btn secondary-btn" id="refreshHistoryBtn" onclick="refreshHistory()">🔄 Refresh</button>
+            </div>
+            <div class="history-list" id="historyList"></div>
+        </div>
+    </div>
+</div>
+
+<!-- ================= MODALS ================= -->
+
+<!-- Add/Edit Recipient Modal -->
+<div class="modal" id="recipientModal">
+    <div class="modal-content">
+        <div class="modal-header">
+            <h3 id="recipientModalTitle">Add Recipient</h3>
+            <button class="modal-close" id="closeRecipientModal" onclick="closeRecipientModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <form id="recipientForm">
+                <div class="form-group">
+                    <label>Name <span class="required">*</span></label>
+                    <input type="text" id="recipientName" placeholder="Full name">
+                </div>
+                <div class="form-group">
+                    <label>Role <span class="required">*</span></label>
+                    <select id="recipientRole">
+                        <option value="Admin">Admin</option>
+                        <option value="NOC Engineer">NOC Engineer</option>
+                        <option value="Support Manager">Support Manager</option>
+                        <option value="Technical Lead">Technical Lead</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label>Email</label>
+                    <input type="email" id="recipientEmail" placeholder="email@example.com">
+                </div>
+                <div class="form-group">
+                    <label>Phone Number (SMS)</label>
+                    <input type="tel" id="recipientPhone" placeholder="+91 XXXXXXXXXX">
+                </div>
+                <div class="form-group">
+                    <label>Slack ID / Webhook</label>
+                    <input type="text" id="recipientSlack" placeholder="@username or webhook URL">
+                </div>
+                <div class="form-group">
+                    <label>Notification Preferences</label>
+                    <div class="pref-checkboxes">
+                        <label><input type="checkbox" id="prefEmail" checked> Email</label>
+                        <label><input type="checkbox" id="prefSms"> SMS</label>
+                        <label><input type="checkbox" id="prefSlack"> Slack</label>
+                    </div>
+                </div>
+            </form>
+        </div>
+        <div class="modal-footer">
+            <button class="btn secondary-btn" id="cancelRecipientBtn" onclick="closeRecipientModal()">Cancel</button>
+            <button class="btn primary-btn" id="saveRecipientBtn" onclick="saveRecipient()">Save Recipient</button>
+        </div>
+    </div>
+</div>
+
+<!-- Delete Confirmation Modal -->
+<div class="modal" id="deleteModal">
+    <div class="modal-content" style="max-width: 400px;">
+        <div class="modal-header">
+            <h3>Delete Recipient</h3>
+            <button class="modal-close" id="closeDeleteModal" onclick="closeDeleteModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p>Are you sure you want to delete recipient <strong id="deleteRecipientName"></strong>?</p>
+            <p>This action cannot be undone.</p>
+        </div>
+        <div class="modal-footer">
+            <button class="btn secondary-btn" id="cancelDeleteBtn" onclick="closeDeleteModal()">Cancel</button>
+            <button class="btn danger-btn" id="confirmDeleteBtn" onclick="confirmDeleteRecipient()">Delete</button>
+        </div>
+    </div>
+</div>
+
+<!-- Resend Alert Modal -->
+<div class="modal" id="resendModal">
+    <div class="modal-content" style="max-width: 500px;">
+        <div class="modal-header">
+            <h3>Resend Alert</h3>
+            <button class="modal-close" id="closeResendModal" onclick="closeResendModal()">&times;</button>
+        </div>
+        <div class="modal-body">
+            <p>Select channels to resend this alert:</p>
+            <div class="resend-options" id="resendOptions">
+                <label><input type="checkbox" id="resendEmail" value="email"> Email</label>
+                <label><input type="checkbox" id="resendSms" value="sms"> SMS</label>
+                <label><input type="checkbox" id="resendSlack" value="slack"> Slack</label>
+                <label><input type="checkbox" id="resendWebhook" value="webhook"> Webhook</label>
+            </div>
+        </div>
+        <div class="modal-footer">
+            <button class="btn secondary-btn" id="cancelResendBtn" onclick="closeResendModal()">Cancel</button>
+            <button class="btn primary-btn" id="confirmResendBtn" onclick="confirmResendAlert()">Resend Alert</button>
+        </div>
+    </div>
+</div>
+
+<!-- ================= FOOTER ================= -->
+<footer class="voxify-footer">
+    <div class="footer-container">
+        <div class="footer-grid">
+            <div class="footer-col"><div class="footer-logo">VOX<span>IFY</span></div><p class="footer-about">Empowering citizens with efficient complaint management and real-time outage detection system.</p><div class="footer-social"><a href="#" class="social-icon">📘</a><a href="#" class="social-icon">🐦</a><a href="#" class="social-icon">📷</a><a href="#" class="social-icon">🔗</a></div></div>
+            <div class="footer-col"><h4>Quick Links</h4><ul class="footer-links"><li><a href="dashboard.html">Dashboard</a></li><li><a href="complaint-form.html">Submit Complaint</a></li><li><a href="tracking.html">Track Status</a></li><li><a href="alerts.html">Alerts</a></li><li><a href="feedback.html">Feedback</a></li></ul></div>
+            <div class="footer-col"><h4>Support</h4><ul class="footer-links"><li><a href="help-center.html">Help Center</a></li><li><a href="faqs.html">FAQs</a></li><li><a href="help-center.html">Contact Support</a></li><li><a href="privacy-policy.html">Privacy Policy</a></li><li><a href="terms-of-service.html">Terms of Service</a></li></ul></div>
+            <div class="footer-col"><h4>Contact Us</h4><ul class="footer-contact"><li>📞 <a href="tel:+911234567890">+91 12345 67890</a></li><li>📧 <a href="mailto:support@voxify.com">support@voxify.com</a></li><li>🏢 Mumbai, Maharashtra, India</li></ul><div class="footer-badge"><span>24/7 Support</span><span>ISO Certified</span></div></div>
+        </div>
+        <div class="footer-bottom"><p>&copy; 2025 VOXIFY - Complaint Management & Outage Detection System. All rights reserved.</p><div class="footer-bottom-links"><a href="#">Sitemap</a><a href="#">Accessibility</a><a href="#">Cookie Policy</a></div></div>
+    </div>
+</footer>
+
+
+<div class="toast" id="toast"><svg width="16" height="16" fill="none" viewBox="0 0 24 24" stroke="currentColor" stroke-width="2.5"><polyline points="20 6 9 17 4 12"/></svg><span id="toastMsg"></span></div>
+
+<script src="../js/common.js"></script>
+<script src="../../js/Admin Dashboard/alert-delivery.js"></script>
+<script>
+    // Tab switching function
+    function switchTab(tabName) {
+        // Hide all tab contents
+        document.getElementById('channelsTab').classList.remove('active');
+        document.getElementById('recipientsTab').classList.remove('active');
+        document.getElementById('historyTab').classList.remove('active');
+        
+        // Remove active class from all tab buttons
+        const tabs = document.querySelectorAll('.delivery-tab');
+        tabs.forEach(tab => tab.classList.remove('active'));
+        
+        // Show selected tab content
+        document.getElementById(tabName + 'Tab').classList.add('active');
+        
+        // Add active class to clicked button
+        event.target.classList.add('active');
+    }
+    
+    // Channel settings save
+    function saveChannelSettings() {
+        showToast('Channel settings saved successfully!', 'success');
+    }
+    
+    // Recipient functions
+    function openAddRecipientModal() {
+        document.getElementById('recipientModal').style.display = 'flex';
+        document.getElementById('recipientModalTitle').innerText = 'Add Recipient';
+        document.getElementById('recipientForm').reset();
+    }
+    
+    function closeRecipientModal() {
+        document.getElementById('recipientModal').style.display = 'none';
+    }
+    
+    function saveRecipient() {
+        const name = document.getElementById('recipientName').value;
+        if (!name) {
+            showToast('Please enter recipient name', 'error');
+            return;
+        }
+        showToast('Recipient saved successfully!', 'success');
+        closeRecipientModal();
+        loadRecipients(); // Refresh the list
+    }
+    
+    function closeDeleteModal() {
+        document.getElementById('deleteModal').style.display = 'none';
+    }
+    
+    function confirmDeleteRecipient() {
+        showToast('Recipient deleted successfully!', 'success');
+        closeDeleteModal();
+        loadRecipients();
+    }
+    
+    function closeResendModal() {
+        document.getElementById('resendModal').style.display = 'none';
+    }
+    
+    function confirmResendAlert() {
+        showToast('Alert resent successfully!', 'success');
+        closeResendModal();
+    }
+    
+    function filterRecipients() {
+        // Filter logic will be in alert-delivery.js
+    }
+    
+    function filterHistory() {
+        // Filter logic will be in alert-delivery.js
+    }
+    
+    function refreshHistory() {
+        showToast('History refreshed!', 'success');
+        loadHistory();
+    }
+    
+    function loadRecipients() {
+        // This will be populated by alert-delivery.js
+        const grid = document.getElementById('recipientsGrid');
+        if (grid) {
+            grid.innerHTML = `
+                <div class="recipient-card">
+                    <div class="recipient-info">
+                        <h4>Admin User</h4>
+                        <p>admin@voxify.com | +91 98765 43210</p>
+                    </div>
+                    <div class="recipient-actions">
+                        <button class="btn-icon" onclick="showToast('Edit recipient', 'info')">✏️</button>
+                        <button class="btn-icon" onclick="document.getElementById('deleteModal').style.display='flex'">🗑️</button>
+                    </div>
+                </div>
+            `;
+        }
+    }
+    
+    function loadHistory() {
+        // This will be populated by alert-delivery.js
+        const historyList = document.getElementById('historyList');
+        if (historyList) {
+            historyList.innerHTML = `
+                <div class="history-item">
+                    <div class="history-icon">📧</div>
+                    <div class="history-details">
+                        <strong>Critical Outage Alert</strong>
+                        <p>Sent to 15 recipients via Email, SMS</p>
+                        <small>Apr 15, 2025 - 10:30 AM</small>
+                    </div>
+                    <span class="status-badge delivered">Delivered</span>
+                    <button class="btn-icon" onclick="document.getElementById('resendModal').style.display='flex'">🔄 Resend</button>
+                </div>
+            `;
+        }
+    }
+    
+    function logout() {
+        localStorage.removeItem('userRole');
+        localStorage.removeItem('userToken');
+        showToast('Logged out successfully!', 'success');
+        setTimeout(() => {
+            window.location.href = 'login.html';
+        }, 1000);
+    }
+    
+    // Initialize on page load
+    document.addEventListener('DOMContentLoaded', function() {
+        loadRecipients();
+        loadHistory();
+        
+        // Close modals when clicking outside
+        window.onclick = function(event) {
+            const modals = document.querySelectorAll('.modal');
+            modals.forEach(modal => {
+                if (event.target === modal) {
+                    modal.style.display = 'none';
+                }
+            });
+        };
+    });
+</script>
+</body>
+</html>

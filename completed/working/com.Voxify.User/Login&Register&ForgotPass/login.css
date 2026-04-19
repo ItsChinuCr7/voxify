@@ -1,0 +1,100 @@
+{
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background: linear-gradient(120deg, #1F4FD8, #E8F0FF, #FFFFFF);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.auth-card {
+    display: flex;
+    width: 840px;
+    background: #fff;
+    border-radius: 10px;
+    overflow: hidden;
+    box-shadow: 0 15px 40px rgba(0,0,0,0.15);
+}
+
+/* LEFT */
+.left-info {
+    width: 40%;
+    padding: 26px 32px;
+    background: linear-gradient(160deg, #0B1F44, #1F4FD8);
+    color: white;
+}
+
+.left-info ul {
+    list-style: none;
+    padding: 0;
+}
+
+/* RIGHT */
+.right-form {
+    width: 60%;
+    padding: 26px 32px;
+}
+
+.field {
+    margin-bottom: 14px;
+    position: relative;
+}
+
+label {
+    font-size: 13px;
+    margin-bottom: 6px;
+    display: block;
+}
+
+/* INPUT STATES */
+#loginID, #loginPassword {
+    width: 100%;
+    padding: 10px;
+    border-radius: 4px;
+    border: 1px solid #000; /* default */
+}
+
+#loginID.invalid {
+    border-color: #DC3545;
+}
+
+#loginID.valid {
+    border-color: #28A745;
+}
+
+.error {
+    font-size: 12px;
+    color: #DC3545;
+    margin-top: 4px;
+    height: 14px;
+}
+
+/* BUTTON */
+button {
+    width: 100%;
+    padding: 12px;
+    background: #1F4FD8;
+    border: none;
+    color: white;
+    font-size: 16px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+button:disabled {
+    background: #A0A7C2;
+    cursor: not-allowed;
+}
+
+/* Eye */
+
+.forgot-link {
+    font-size: 13px;
+    display: inline-block;
+    margin-top: 6px;
+}
