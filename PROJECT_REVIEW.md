@@ -46,3 +46,15 @@ To make this project truly "Investor-Ready," the following missing elements must
 *   **Implement a Build Tool:** Use Vite or Webpack to bundle assets and optimize images.
 *   **Unified Styles:** Consolidate all CSS variables into a single `:root` in `design-tokens.css` and remove duplicates from component-specific CSS.
 *   **Dynamic Role Routing:** Instead of separate folders for each role, use a single dashboard structure that dynamically renders components based on the user's role.
+
+## 8. Updates & Fixes (Post-Backlog Review)
+*   **Manual Escalation (US-25):**
+    *   Added "Escalate" action buttons to all incident/outage cards in the NOC Dashboard and Outage Alert Center.
+    *   Implemented a standardized Escalation Modal with Level selection, Recipient assignment (in manual view), and Reason input.
+    *   Added visual indicators (badges) for different escalation levels.
+    *   Integrated Escalation History/Timeline into the NOC workflow.
+*   **Auto Escalation Rules:**
+    *   Created a new configuration interface (`auto-escalation.html`) for defining automated escalation triggers based on SLA and severity.
+    *   Implemented mock CRUD functionality for managing these rules.
+*   **User Visibility:**
+    *   Enabled the Escalation Status card on the User Complaint Tracking page to provide transparency on issue handling.

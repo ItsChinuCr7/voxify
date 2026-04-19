@@ -226,8 +226,11 @@ function renderOutageCards() {
                     <button class="action-btn monitor" onclick="handleAction('${outage.id}', 'monitor')">
                         📊 Monitor
                     </button>
-                    <button class="action-btn resolve" onclick="handleAction('${outage.id}', 'resolve')">
+                    <button class="action-btn resolve" onclick="handleAction('${outage.id}', 'resolve')" style="margin-right: 5px;">
                         ✅ Resolve
+                    </button>
+                    <button class="action-btn escalate" onclick="handleAction('${outage.id}', 'escalate')" style="background: #FFF5F5; color: #E53E3E; border: 1px solid #FED7D7;">
+                        🚨 Escalate
                     </button>
                 </div>
             </div>
@@ -278,8 +281,45 @@ window.handleAction = function(id, action) {
             if (notesInput) notesInput.value = '';
             if (modal) modal.classList.add('show');
             break;
+        case 'escalate':
+            openEscalationModal(outage);
+            break;
     }
 };
+
+function openEscalationModal(outage) {
+    const modal = document.getElementById('escalationModal');
+    const info = document.getElementById('escalationOutageInfo');
+    if (!modal || !info) return;
+
+    info.innerHTML = `
+        <p><strong>Outage:</strong> ${escapeHtml(outage.title)}</p>
+        <p><strong>Region:</strong> ${escapeHtml(outage.region)}</p>
+        <p><strong>Severity:</strong> <span class="outage-badge ${outage.severity}">${outage.severity.toUpperCase()}</span></p>
+    `;
+
+    document.getElementById('escalationReason').value = '';
+    modal.classList.add('show');
+    window.currentEscalatingOutage = outage;
+}
+
+function closeEscalationModal() {
+    const modal = document.getElementById('escalationModal');
+    if (modal) modal.classList.remove('show');
+}
+
+document.getElementById('closeEscalationModalBtn')?.addEventListener('click', closeEscalationModal);
+document.getElementById('cancelEscalateBtn')?.addEventListener('click', closeEscalationModal);
+document.getElementById('confirmEscalateBtn')?.addEventListener('click', () => {
+    const reason = document.getElementById('escalationReason').value.trim();
+    if (!reason) {
+        showToast('Please provide a reason for escalation', 'error');
+        return;
+    }
+    const level = document.getElementById('escalationLevel').value;
+    showToast(`🚨 ${window.currentEscalatingOutage.title} escalated to ${level}`, 'success');
+    closeEscalationModal();
+});
 
 // ========= RESOLVE MODAL FUNCTIONS =========
 function closeResolveModal() {
