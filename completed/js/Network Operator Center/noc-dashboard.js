@@ -132,6 +132,7 @@ function loadIncidentsTable() {
             <td>${incident.duration}</td>
             <td><span class="status-badge ${incident.status}">${incident.status.toUpperCase()}</span></td>
             <td><button class="btn view-btn" onclick="viewIncident('${incident.id}')">View</button></td>
+            <td><button class="btn view-btn" style="background: #FFF5F5; color: #E53E3E; border-color: #FED7D7;" onclick="escalateIncident('${incident.id}')">🚨 Escalate</button></td>
         </tr>
     `).join('');
 }
